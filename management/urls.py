@@ -1,12 +1,16 @@
 from django.urls import path , include
 from rest_framework import routers
 from . import views
-from .views import signup , signin
+from .views import signup , signin, package_list,package_create,package_detail , logout
 urlpatterns = [
     path('', views.index, name='index'),
-    path('packages',views.packages, name='packages'),
+    path('packagelist/', package_list, name='package_list'),
+    path('package/<int:pk>/', package_detail, name='package_detail'),
+    path('package/create/', package_create, name='package_create'),
+    # path('packages',views.packages, name='packages'),
     path('signup', signup, name='signup'),
     path('signin/', signin, name='signin'),
+    path('logout/', logout, name='logout'),
 ]
 
 # router = routers.DefaultRouter()

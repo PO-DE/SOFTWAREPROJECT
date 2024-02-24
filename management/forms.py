@@ -6,7 +6,8 @@ import datetime
 class PackageForm(forms.ModelForm):
     class Meta:
         model = Package
-        fields = ['source', 'destination','seats','room']
+        fields = '__all__'
+        # fields = ['source', 'destination','seats','room']
 
 class SignUpForm(UserCreationForm):
     first_name = forms.CharField(max_length=30, required=False, help_text='Optional.')
@@ -16,14 +17,14 @@ class SignUpForm(UserCreationForm):
     class Meta:
         model = User
         fields = ('username', 'first_name', 'last_name', 'email', 'password1', 'password2')
-        widgets={
-            'username': forms.TextInput(attrs={'class': "form-control"}),
-            'first_name': forms.TextInput(attrs={'class': "form-control"}),
-            'last_name': forms.TextInput(attrs={"class": "form-control"}),
-            'email': forms.EmailInput(attrs={'class': "form-control"}),
-            'password1': forms.PasswordInput(attrs={'class':  "form-control"}),
-            'password2': forms.PasswordInput(attrs={'class':"form-control"}),
-        }
+    #     widgets={
+    #         'username': forms.TextInput(attrs={'class': "form-control"}),
+    #         'first_name': forms.TextInput(attrs={'class': "form-control"}),
+    #         'last_name': forms.TextInput(attrs={"class": "form-control"}),
+    #         'email': forms.EmailInput(attrs={'class': "form-control"}),
+    #         'password1': forms.PasswordInput(attrs={'class':  "form-control"}),
+    #         'password2': forms.PasswordInput(attrs={'class':"form-control"}),
+    #     }
 
     def clean(self):
         cleaned_data = super(UserCreationForm, self).clean()
@@ -38,7 +39,7 @@ class SignInForm(AuthenticationForm):
     class Meta:
         model = User
         fields = ('username', 'password')
-        widgets ={
-            'username': forms.TextInput(attrs={'class': "form-control"}),
-            'password': forms.PasswordInput(attrs={'class': "form-control"}),
-        }
+        # widgets ={
+        #     'username': forms.TextInput(attrs={'class': "form-control"}),
+        #     'password': forms.PasswordInput(attrs={'class': "form-control"}),
+        # }

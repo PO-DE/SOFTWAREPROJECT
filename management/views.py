@@ -3,15 +3,16 @@ from django.shortcuts import render , redirect
 # Create your views here.# packages/views.py
 from datetime import datetime
 from rest_framework import viewsets, permissions
-from django_filters.rest_framework import DjangoFilterBackend
 from .models import Package
-from .serializers import PackageSerializer
 from .forms import PackageForm , SignUpForm , SignInForm
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import login, authenticate ,logout
+from django.views.generic import ListView , DetailView
 
 def index(request):
     return render(request, 'index.html')
+# class PackageView(ListView):
+#     model = Post
 @login_required()
 def packages(request):
     form = PackageForm(request.POST or None, request.FILES or None)
@@ -29,19 +30,19 @@ def packages(request):
     # context = {'title': 'welcome', 'form': form}
     return render(request,'package.html')
 
-class PackageViewSet(viewsets.ModelViewSet):
-    queryset = Package.objects.all()
-    serializer_class = PackageSerializer
-    permission_classes = [permissions.IsAuthenticated]
-    filter_backends = [DjangoFilterBackend]
-    filterset_fields = "__all__"
-    search_fields = "__all__"
-    def get_permissions(self):
-        if self.action == 'list':
-            permissions_classes = [permissions.AllowAny]
-        else:
-            permissions_classes = [permissions.IsAdminUser]
-        return [permission() for permission in permissions_classes]
+# class PackageViewSet(viewsets.ModelViewSet):
+#     queryset = Package.objects.all()
+#     serializer_class = PackageSerializer
+#     permission_classes = [permissions.IsAuthenticated]
+#     filter_backends = [DjangoFilterBackend]
+#     filterset_fields = "__all__"
+#     search_fields = "__all__"
+#     def get_permissions(self):
+#         if self.action == 'list':
+#             permissions_classes = [permissions.AllowAny]
+#         else:
+#             permissions_classes = [permissions.IsAdminUser]
+#         return [permission() for permission in permissions_classes]
 
 def signup(request):
     if request.method == 'POST':
@@ -58,8 +59,6 @@ def signup(request):
     else:
         form = SignUpForm()
     return render(request, 'signup.html', {'form': form})
-# def signup_success(request):
-
 def signin(request):
     if request.method == 'POST':
         form = SignInForm(data=request.POST)
@@ -73,3 +72,28 @@ def signin(request):
     else:
         form = SignInForm()
     return render(request, 'signin.html', {'form': form})
+@login_required(login_url='signin')
+def logout(request):
+    logout(request)
+    return redirect('index')
+# copy from chatgpt 24-02-2024
+@login_required(login_url='signin')
+def package_list(request):
+    packages = Package.objects.all()
+    return render(request, 'package_list.html', {'packages': packages})
+
+@login_required()
+def package_detail(request, pk):
+    package = Package.objects.get(pk=pk)
+    return render(request, 'package_detail.html', {'package': package})
+
+@login_required()
+def package_create(request):
+    if request.method == 'POST':
+        form = PackageForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('package_list')
+    else:
+        form = PackageForm()
+    return render(request, 'package_form.html', {'form': form})

@@ -1,0 +1,18 @@
+<!-- package_list.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Package List</title>
+</head>
+<body>
+    <h1>Package List</h1>
+    <ul>
+        {% for package in packages %}
+            <li><a href="{% url 'package_detail' package.pk %}">{{ package.source }}-{{ package.destination }}-{{ package.user }}</a></li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'package_create' %}">Create New Package</a>
+</body>
+</html>
