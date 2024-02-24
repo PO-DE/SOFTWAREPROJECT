@@ -1,12 +1,10 @@
 <!-- package_list.html -->
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Package List</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% block title %}
+    Package List
+{% endblock title %}
+{% block body %}
     <h1>Package List</h1>
     <ul>
         {% for package in packages %}
@@ -14,5 +12,4 @@
         {% endfor %}
     </ul>
     <a href="{% url 'package_create' %}">Create New Package</a>
-</body>
-</html>
+{% endblock %}
