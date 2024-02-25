@@ -73,16 +73,16 @@ def signin(request):
         form = SignInForm()
     return render(request, 'signin.html', {'form': form})
 @login_required(login_url='signin')
-def logout(request):
+def Logout(request):
     logout(request)
     return redirect('index')
 # copy from chatgpt 24-02-2024
-@login_required(login_url='signin')
+# @login_required(login_url='signin')
 def package_list(request):
     packages = Package.objects.all()
     return render(request, 'package_list.html', {'packages': packages})
 
-@login_required()
+# @login_required()
 def package_detail(request, pk):
     package = Package.objects.get(pk=pk)
     return render(request, 'package_detail.html', {'package': package})

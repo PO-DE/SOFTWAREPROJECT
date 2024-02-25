@@ -1,7 +1,7 @@
 from django.urls import path , include
 from rest_framework import routers
 from . import views
-from .views import signup , signin, package_list,package_create,package_detail , logout
+from .views import signup , signin, package_list,package_create,package_detail , Logout
 urlpatterns = [
     path('', views.index, name='index'),
     path('packagelist/', package_list, name='package_list'),
@@ -10,7 +10,7 @@ urlpatterns = [
     # path('packages',views.packages, name='packages'),
     path('signup', signup, name='signup'),
     path('signin/', signin, name='signin'),
-    path('logout/', logout, name='logout'),
+    path('logout/', Logout, name='logout'),
 ]
 
 # router = routers.DefaultRouter()
