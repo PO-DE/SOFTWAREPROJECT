@@ -1,0 +1,55 @@
+/*Form css*/
+.form-control {
+    display: flex;
+    flex-direction: column; /* Aligns form elements vertically */
+    align-items: center; /* Centers form elements horizontally */
+    justify-content: center;
+    width: 100%; /* Set desired width */
+    max-width: 500px; /* Maximum width */
+    margin: auto; /* Center the form in the page */
+    padding: 20px;
+}
+
+.form-container {
+    margin-bottom: 15px; /* Space between form groups */
+    width: 100%; /* Full width of the container */
+}
+
+label, input, button {
+    width: 100%; /* Full width of their container */
+}
+
+/* signin page css */
+
+.signin-form {
+    /* Styles for the form */
+    margin: auto;
+    width: 25%;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.signin-form input {
+    /* Styles for input fields */
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+}
+
+.signin-form button {
+    /* Styles for the submit button */
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.signin-form button:hover {
+    background-color: #0056b3;
+}

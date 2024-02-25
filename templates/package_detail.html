@@ -1,0 +1,15 @@
+<!-- package_detail.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Package Detail</title>
+</head>
+<body>
+    <h1>{{ package.source }}|{{ package.destination }}</h1>
+    <p>Description: {{ package.description }}</p>
+    <p>Price: {{ package.price }}</p>
+    <a href="{% url 'package_list' %}">Back to Package List</a>
+</body>
+</html>
