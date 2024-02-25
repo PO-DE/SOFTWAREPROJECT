@@ -6,9 +6,9 @@
     Create Package
 {% endblock title %}
 {% block body %}
-    <div class="form-container" >
-    <h1>Create Package</h1>
-    <div class="form-group" >
+{#    <div class="form-control" >#}
+    <h1 align="center">Create Package </h1>
+    <div class="form-control" >
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
