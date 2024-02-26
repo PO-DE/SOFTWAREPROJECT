@@ -3,7 +3,7 @@ from django.shortcuts import render , redirect
 from datetime import datetime
 from rest_framework import viewsets, permissions
 from .models import Package, Booking
-from .forms import PackageForm , SignUpForm , SignInForm
+from .forms import PackageForm, SignUpForm, SignInForm, SearchForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, authenticate ,logout
 from .serializers import BookingSerializer
@@ -31,8 +31,10 @@ def packages(request):
     return render(request,'package.html')
 
 
+@login_required()
 class BookingViewSet(viewsets.ModelViewSet):
     serializer_class = BookingSerializer
+    queryset = Booking.objects.all()
 
     def get_queryset(self):
         queryset = Booking.objects.all()
@@ -85,6 +87,8 @@ def signin(request):
     else:
         form = SignInForm()
     return render(request, 'signin.html', {'form': form})
+
+
 @login_required(login_url='signin')
 def Logout(request):
     logout(request)
@@ -112,3 +116,11 @@ def package_create(request):
     else:
         form = PackageForm()
     return render(request, 'package_form.html', {'form': form})
+
+
+def search_results(request):
+    query = request.GET.get('q')
+    results = None
+    if query:
+        results = results = Package.objects.filter(destination__icontains=query) | Package.objects.filter(source__icontains=query)
+    return render(request, 'search_results.html', {'results': results, 'query': query})

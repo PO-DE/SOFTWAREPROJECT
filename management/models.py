@@ -30,7 +30,14 @@ class Notification(models.Model):
     # booking = models.ForeignKey('bookings.Booking', on_delete=models.CASCADE)
     message = models.CharField(max_length=255)
 
-    created_at = models.DateTimeField(auto_now_add=True)
+    # created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return f'{self.user.username}: {self.message}'
+
+
+# booking code
+class Booking(models.Model):
+    name = models.CharField(max_length=255)
+    email = models.EmailField()
+    # created_at = models.DateTimeField(auto_now_add=True)

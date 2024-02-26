@@ -8,5 +8,6 @@ from .models import Booking
 admin.site.register(Package)
 
 @admin.register(Booking)
-class CustomerBookingAdmin(admin.ModelAdmin):
-    list_display = ('customer_name', 'customer_email')
+class BookingAdmin(admin.ModelAdmin):
+    list_display = ('name', 'email')
+    search_fields = ('name' , 'email')
