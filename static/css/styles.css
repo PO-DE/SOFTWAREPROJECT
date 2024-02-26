@@ -110,3 +110,16 @@ button:hover{/*.signin-form button:hover {*/
 .signup-form button:hover {
     background-color: #0056b3;
 }
+
+/* Style for the current page link */
+nav ul li a.current {
+  color: #bab0b0; /* Change color as needed */
+  font-weight: bold; /* Add other styles as needed */
+}
+
+/*.margin-bottom-10 {*/
+/*    margin-bottom: 10px;*/
+/*    margin-top: 10px;*/
+/*    margin-left: 15px;*/
+/*    margin-right: 10px;*/
+/*}*/

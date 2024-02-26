@@ -14,15 +14,15 @@ class Package(models.Model):
     description= models.TextField(max_length=100,default=None)
     price= models.IntegerField(default=None)
     date= models.DateTimeField(default=datetime.now)
+    # image = models.ImageField(upload_to='package_images/', null=True, blank=True)
 
     def __str__(self):
         return self.source + "|" + self.destination + "|" + str(self.user)
 
 
-class Booking(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, default=None)
-    customer_name = models.CharField(max_length=100)
-    customer_email = models.EmailField()
+class PackageImage(models.Model):
+    package = models.ForeignKey(Package, related_name='images', on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='package_images/')
 
 
 class Notification(models.Model):
@@ -38,6 +38,9 @@ class Notification(models.Model):
 
 # booking code
 class Booking(models.Model):
-    name = models.CharField(max_length=255)
-    email = models.EmailField()
+    customer_name = models.CharField(max_length=255)
+    customer_email = models.EmailField()
     # created_at = models.DateTimeField(auto_now_add=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, default=User.objects.get(username="clumsycoders"))
+    Date= models.DateTimeField(default=datetime.now)
+    Package = models.ForeignKey(Package, on_delete=models.CASCADE, default=None)

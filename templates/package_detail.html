@@ -7,7 +7,15 @@
     <title>Package Detail</title>
 </head>
 <body>
-    <h1>{{ package.source }}|{{ package.destination }}</h1>
+    <h1>{{ package.source }} - {{ package.destination }}</h1>
+    {% if package.image %}
+        <h2>Images</h2>
+        <div>
+            {% for image in package.images.all %}
+                <img src="{{ image.image.url }}" alt="{{ package.source }} - {{ package.destination }}">
+            {% endfor %}
+        </div>
+    {% endif %}
     <p>Description: {{ package.description }}</p>
     <p>Price: {{ package.price }}</p>
     <a href="{% url 'package_list' %}">Back to Package List</a>

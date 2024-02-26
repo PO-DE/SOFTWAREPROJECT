@@ -8,9 +8,9 @@ urlpatterns = [
     path('packagelist/', package_list, name='package_list'),
     path('package/<int:pk>/', package_detail, name='package_detail'),
     path('package/create/', package_create, name='package_create'),
-    path('signup', signup, name='signup'),
+    path('signup/', signup, name='signup'),
     path('signin/', signin, name='signin'),
     path('logout/', Logout, name='logout'),
     path('search/', search_results, name='search_results'),
-    path('Booking/', BookingViewSet, name='logout'),
+    path('Booking/', BookingViewSet, name='Bookings'),
 ]
