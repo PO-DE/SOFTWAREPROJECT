@@ -1,12 +1,106 @@
-<!-- package_detail.html -->
+{#<!-- package_detail.html -->#}
+{#{% extends 'base.html' %}#}
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#    <meta charset="UTF-8">#}
+{#    <title>Package Detail</title>#}
+{#</head>#}
+{#<body>#}
+{#    <h1>{{ package.source }} - {{ package.destination }}</h1>#}
+{#    {% if package.image %}#}
+{#        <h2>Images</h2>#}
+{#        <div>#}
+{#            {% for image in package.images.all %}#}
+{#                <img src="{{ image.image.url }}" alt="{{ package.source }} - {{ package.destination }}">#}
+{#            {% endfor %}#}
+{#        </div>#}
+{#    {% endif %}#}
+{#    <p>Description: {{ package.description }}</p>#}
+{#    <p>Price: {{ package.price }}</p>#}
+{#    <a href="{% url 'package_list' %}">Back to Package List</a>#}
+{#</body>#}
+{#</html>#}
+{##}
+{##}
+{#{% extends 'base.html' %}#}
+{#{% load static %}#}
+{##}
+{#{% block title %}#}
+{#    Package Detail#}
+{#{% endblock %}#}
+{##}
+{#{% block css %}#}
+{#    <link rel="stylesheet"  href="{% static 'css/styles.css' %}">#}
+{#{% endblock %}#}
+{##}
+{#{% block css %}#}
+{#    <style>#}
+{#        /* CSS for title */#}
+{#        h1 {#}
+{#            color: blue;#}
+{#            padding-left: 30px;#}
+{#            padding-top: 15px;#}
+{#        }#}
+{#        /* CSS for content */#}
+{#        h2 {#}
+{#            margin: 50px;#}
+{#            border: #0056b3;#}
+{#            border: solid;#}
+{#        }#}
+{#        /* CSS for description */#}
+{#        .description,#}
+{#        #}
+{#        p.price {#}
+{#            margin-left: 20px;#}
+{#            color: #666;#}
+{#            /* Add other styles as needed */#}
+{#        }#}
+{##}
+{#        /* CSS for "Back to Package List" link */#}
+{#        a.back-link {#}
+{#            color: #007bff;#}
+{#            text-decoration: none;#}
+{#            /* Add other styles as needed */#}
+{#        }#}
+{##}
+{#        a.back-link:hover {#}
+{#            text-decoration: underline;#}
+{#            /* Add hover styles as needed */#}
+{#        }#}
+{#    </style>#}
+{#    </style>#}
+{#{% endblock %}#}
+{##}
+{#{% block content %}#}
+{#    <h1>{{ package.source }} - {{ package.destination }}</h1>#}
+{#    {% if package.image %}#}
+{#        <h2>Images</h2>#}
+{#        <div>#}
+{#            {% for image in package.images.all %}#}
+{#                <img src="{{ image.image.url }}" alt="{{ package.source }} - {{ package.destination }}">#}
+{#            {% endfor %}#}
+{#        </div>#}
+{#    {% endif %}#}
+{#    <p>Description: {{ package.description }}</p>#}
+{#    <p>Price: {{ package.price }}</p>#}
+{#    <a href="{% url 'package_list' %}">Back to Package List</a>#}
+{#{% endblock %}#}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Package Detail</title>
-</head>
-<body>
+
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Package Detail
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet"  href="{% static 'css/styles.css' %}">
+{% endblock %}
+
+{% block content %}
     <h1>{{ package.source }} - {{ package.destination }}</h1>
     {% if package.image %}
         <h2>Images</h2>
@@ -18,6 +112,5 @@
     {% endif %}
     <p>Description: {{ package.description }}</p>
     <p>Price: {{ package.price }}</p>
-    <a href="{% url 'package_list' %}">Back to Package List</a>
-</body>
-</html>
+    <a href="{% url 'package_list' %}" class="back-link">Back to Package List</a>
+{% endblock %}

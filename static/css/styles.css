@@ -77,7 +77,7 @@ button:hover{/*.signin-form button:hover {*/
     border-radius: 5px;
     margin-bottom: 30px;
 }
-.signup-form h2 {
+.signup-form h3 {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -117,9 +117,35 @@ nav ul li a.current {
   font-weight: bold; /* Add other styles as needed */
 }
 
-/*.margin-bottom-10 {*/
-/*    margin-bottom: 10px;*/
-/*    margin-top: 10px;*/
-/*    margin-left: 15px;*/
-/*    margin-right: 10px;*/
-/*}*/
+/*!*package details page css*!*/
+h1 {
+    color: blue;
+    padding-left: 30px;
+    padding-top: 15px;
+    padding-bottom: 5px;
+}
+h2 {
+    margin: 50px;
+    border: solid;
+    border-color: #0056b3;
+}
+.description,
+p {
+    margin-left: 30px ;
+    color: #666;
+}
+dl, ol, ul {
+    margin-top: 0;
+    margin-bottom: 1.2rem;
+}
+ol, ul {
+    padding-left: 3rem;
+}
+a.back-link:hover {
+    margin-left: 30px;
+}
+a.back-link {
+    color: #007bff;
+    text-decoration: none;
+    margin-left: 30px;
+}

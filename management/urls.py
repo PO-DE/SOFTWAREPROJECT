@@ -1,7 +1,8 @@
 from django.urls import path , include
 from rest_framework import routers
 from . import views
-from .views import signup, signin, package_list, package_create, package_detail, Logout, search_results, BookingViewSet
+from .views import signup, signin, package_list, package_create, package_detail, Logout, search_results, BookingViewSet, \
+    forgotpassword
 
 urlpatterns = [
     path('', views.index, name='index'),
@@ -13,4 +14,5 @@ urlpatterns = [
     path('logout/', Logout, name='logout'),
     path('search/', search_results, name='search_results'),
     path('Booking/', BookingViewSet, name='Bookings'),
+    path('forgotpassword/', forgotpassword, name='forgot password'),
 ]

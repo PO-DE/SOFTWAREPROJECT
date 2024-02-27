@@ -41,6 +41,6 @@ class Booking(models.Model):
     customer_name = models.CharField(max_length=255)
     customer_email = models.EmailField()
     # created_at = models.DateTimeField(auto_now_add=True)
-    user = models.ForeignKey(User, on_delete=models.CASCADE, default=User.objects.get(username="clumsycoders"))
+    user = models.ForeignKey(User, on_delete=models.CASCADE)# default=User.objects.get(username="clumsycoders")
     Date= models.DateTimeField(default=datetime.now)
     Package = models.ForeignKey(Package, on_delete=models.CASCADE, default=None)
