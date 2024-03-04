@@ -1,0 +1,151 @@
+/*Form css*/
+.form-control {
+    display: flex;
+    flex-direction: column; /* Aligns form elements vertically */
+    align-items: center; /* Centers form elements horizontally */
+    justify-content: center;
+    width: 90%; /* Set desired width */
+    max-width: 500px; /* Maximum width */
+    margin: auto; /* Center the form in the page */
+    padding: 20px;
+}
+
+.form-container {
+    margin-bottom: 15px; /* Space between form groups */
+    width: 100%; /* Full width of the container */
+}
+
+label, input {
+    width: 100%; /* Full width of their container */
+
+}
+
+button:hover{/*.signin-form button:hover {*/
+    background-color: #0056b3;
+
+}
+
+/* signin page css */
+
+.signin-form {
+    /* Styles for the form */
+
+    margin: auto;
+    width: 25%;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.signin-form input {
+    /* Styles for input fields */
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+}
+
+.signin-form button {
+    /* Styles for the submit button */
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.signin-form button:hover {
+    background-color: #0056b3;
+}
+
+
+/* signup page css */
+
+.signup-form {
+    /* Styles for the form */
+    /*display: flex;*/
+    /*flex-direction: column;*/
+    /*justify-content: center;*/
+    /*align-items: center;*/
+    margin: auto;
+    width: 34%;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 30px;
+}
+.signup-form h3 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+    /*justify-content: center;*/
+    /*margin-top: 0; !* Remove any default margin *!*/
+}
+
+.signup-form input {
+    /* Styles for input fields */
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+}
+
+.signup-form button {
+    /* Styles for the submit button */
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.signup-form button:hover {
+    background-color: #0056b3;
+}
+
+/* Style for the current page link */
+nav ul li a.current {
+  color: #bab0b0; /* Change color as needed */
+  font-weight: bold; /* Add other styles as needed */
+}
+
+/*!*package details page css*!*/
+h1 {
+    color: blue;
+    padding-left: 30px;
+    padding-top: 15px;
+    padding-bottom: 5px;
+}
+h2 {
+    margin: 50px;
+    border: solid;
+    border-color: #0056b3;
+}
+.description,
+p {
+    margin-left: 30px ;
+    color: #666;
+}
+dl, ol, ul {
+    margin-top: 0;
+    margin-bottom: 1.2rem;
+}
+ol, ul {
+    padding-left: 3rem;
+}
+a.back-link:hover {
+    margin-left: 30px;
+}
+a.back-link {
+    color: #007bff;
+    text-decoration: none;
+    margin-left: 30px;
+}
