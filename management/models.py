@@ -22,7 +22,7 @@ class Package(models.Model):
 
 class PackageImage(models.Model):
     package = models.ForeignKey(Package, related_name='images', on_delete=models.CASCADE)
-    image = models.ImageField(upload_to='package_images/')
+    image = models.ImageField(upload_to='static/img/package_images/')
 
 
 class Notification(models.Model):

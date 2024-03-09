@@ -102,8 +102,8 @@
 
 {% block content %}
     <h1>{{ package.source }} - {{ package.destination }}</h1>
-    {% if package.image %}
-        <h2>Images</h2>
+    {% if package.images.count > 0 %}
+{#        <h2>Images</h2>#}
         <div>
             {% for image in package.images.all %}
                 <img src="{{ image.image.url }}" alt="{{ package.source }} - {{ package.destination }}">
