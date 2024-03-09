@@ -21,6 +21,6 @@ class BookingAdmin(admin.ModelAdmin):
 
 @admin.register(Package)
 class PackageAdmin(admin.ModelAdmin):
-    list_display = ('source', 'destination')
-    list_filter = ('source', 'destination')
-    search_fields = ('source' , 'destination')
+    list_display = ('destination','price')
+    list_filter = ('destination','price')
+    search_fields = ('destination','price')
