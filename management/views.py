@@ -104,12 +104,12 @@ def package_list(request):
 
 # @login_required()
 
+# def package_detail(request, pk):
+#     package = Package.objects.get(pk=pk)
+#     return render(request, 'package_detail.html', {'package': package})
+
 def package_detail(request, pk):
     package = Package.objects.get(pk=pk)
-    return render(request, 'package_detail.html', {'package': package})
-
-def package_detail(request, package_id):
-    package = Package.objects.get(pk=package_id)
 
     # Define logic to retrieve images based on the destination
     if package.destination == 'Toronto':

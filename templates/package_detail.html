@@ -105,19 +105,19 @@
     <link rel="stylesheet"  href="{% static 'css/styles.css' %}">
 {% endblock %}
 
-{% block content %}
-    <h1>{{ package.source }} - {{ package.destination }}</h1>
-    {% if package.images.count > 0 %}
+{#{% block content %}#}
+{#    <h1>{{ package.source }} - {{ package.destination }}</h1>#}
+{#    {% if package.images.count > 0 %}#}
 {#        <h2>Images</h2>#}
-        <div>
-            {% for image in package.images.all %}
-                <img src="{{ image.image.url }}" alt="{{ package.source }} - {{ package.destination }}">
-            {% endfor %}
-        </div>
-    {% endif %}
-    <p>Description: {{ package.description }}</p>
-    <p>Price: {{ package.price }}</p>
-    <a href="{% url 'package_list' %}" class="back-link">Back to Package List</a>
+{#        <div>#}
+{#            {% for image in package.images.all %}#}
+{#                <img src="{{ image.image.url }}" alt="{{ package.source }} - {{ package.destination }}">#}
+{#            {% endfor %}#}
+{#        </div>#}
+{#    {% endif %}#}
+{#    <p>Description: {{ package.description }}</p>#}
+{#    <p>Price: {{ package.price }}</p>#}
+{#    <a href="{% url 'package_list' %}" class="back-link">Back to Package List</a>#}
 
 {% block content %}
     <h1>{{ package.source }} - {{ package.destination }}</h1>
