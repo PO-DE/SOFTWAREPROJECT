@@ -3,7 +3,7 @@ from django.shortcuts import render , redirect
 from datetime import datetime
 from rest_framework import viewsets, permissions
 from .models import Package, Booking
-from .forms import PackageForm , SignUpForm , SignInForm
+from .forms import PackageForm, SignUpForm, SignInForm, SearchForm, ForgotPasswordForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, authenticate ,logout
 from .serializers import BookingSerializer
@@ -31,8 +31,10 @@ def packages(request):
     return render(request,'package.html')
 
 
+@login_required()
 class BookingViewSet(viewsets.ModelViewSet):
     serializer_class = BookingSerializer
+    queryset = Booking.objects.all()
 
     def get_queryset(self):
         queryset = Booking.objects.all()
@@ -85,6 +87,8 @@ def signin(request):
     else:
         form = SignInForm()
     return render(request, 'signin.html', {'form': form})
+
+
 @login_required(login_url='signin')
 def Logout(request):
     logout(request)
@@ -102,7 +106,10 @@ def package_detail(request, pk):
 
 @login_required
 def package_create(request):
-    if not request.user.is_superuser:
+    if not request.user.is_superuser and not (
+            request.user.has_perm('management.view_package')
+            or request.user.has_perm('management.add_package')
+    ):
         return HttpResponseForbidden("You are not authorized to view this page")
     if request.method == 'POST':
         form = PackageForm(request.POST)
@@ -112,3 +119,19 @@ def package_create(request):
     else:
         form = PackageForm()
     return render(request, 'package_form.html', {'form': form})
+
+
+def search_results(request):
+    query = request.GET.get('q')
+    results = None
+    if query:
+        results = results = Package.objects.filter(destination__icontains=query) | Package.objects.filter(source__icontains=query)
+    return render(request, 'search_results.html', {'results': results, 'query': query})
+
+def forgotpassword(request):
+    if request.method == 'POST':
+        # Handle form submission if needed
+        pass
+    else:
+        form = ForgotPasswordForm()
+    return render(request, 'forgotpassword.html', {'form': form})

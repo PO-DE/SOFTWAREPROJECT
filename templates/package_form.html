@@ -6,15 +6,15 @@
     Create Package
 {% endblock title %}
 {% block body %}
-    <div class="form-container" >
-    <h1>Create Package</h1>
-    <div class="form-group" >
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Save</button>
-    </form>
-    <a href="{% url 'package_list' %}">Cancel</a>
+{#    <div class="form-control" >#}
+    <h1 align="center">Create Package </h1>
+    <div class="form-control" >
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Save</button>
+        </form>
+        <a href="{% url 'package_list' %}">Cancel</a>
     </div>
     </div>
 {% endblock %}

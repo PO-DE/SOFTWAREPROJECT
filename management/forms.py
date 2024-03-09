@@ -12,7 +12,7 @@ class PackageForm(forms.ModelForm):
 class SignUpForm(UserCreationForm):
     first_name = forms.CharField(max_length=30, required=False, help_text='Optional.')
     last_name = forms.CharField(max_length=30, required=False, help_text='Optional.')
-    email = forms.EmailField(max_length=254, help_text='Required. Inform a valid email address.')
+    email = forms.EmailField(max_length=254, help_text='Required. Enter a valid email address.')
 
     class Meta:
         model = User
@@ -43,3 +43,11 @@ class SignInForm(AuthenticationForm):
         #     'username': forms.TextInput(attrs={'class': "form-control"}),
         #     'password': forms.PasswordInput(attrs={'class': "form-control"}),
         # }
+
+
+class SearchForm(forms.Form):
+    search_query = forms.CharField(max_length=100)
+
+class ForgotPasswordForm(forms.Form):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)

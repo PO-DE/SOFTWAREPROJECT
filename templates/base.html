@@ -13,7 +13,7 @@
   <body>    
     <nav class="navbar navbar-expand-lg bg-body-tertiary " data-bs-theme="dark">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Voyage</a>
+    <a class="navbar-brand" href="/">Voyage</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -21,32 +21,59 @@
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 {#      Home page #}
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/">Home</a>
+          <a class="nav-link {% if request.path == '/' %}active{% endif %}" aria-current="page" href="/">Home</a>
         </li>
 {#      packages page #}
         <li class="nav-item">
-          <a class="nav-link" href="packagelist/">Packages</a>
+          <a class="nav-link {% if request.path == '/packagelist/' %}active{% endif %}" href="packagelist/">Packages</a>
         </li>
 {#      Dropdown menu for users #}
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a class="nav-link dropdown-toggle {% if request.path == '/signup/' or request.path == '/signin/' or request.path == '/logout/' %}active{% endif %}" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             User
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="/signup">Signup</a></li>
-            <li><a class="dropdown-item" href="/signin">Signin</a></li>
-            <li><hr class="dropdown-divider"></li>
+          
+{#            <li><a class="dropdown-item {% if request.path == '/signup/' %}active{% endif %}" href="/signup">Signup</a></li>#}
+{#            <li><a class="dropdown-item {% if request.path == '/signin/' %}active{% endif %}" href="/signin">Signin</a></li>#}
+{#            <li><hr class="dropdown-divider"></li>#}
+{#              {% if user.is_authenticated %}#}
+{#            <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>#}
+{#              {% endif %}#}
+          
+{#          if logged in then cant log in again he has to logout first  that code #}
+{#              <li><a class="dropdown-item {% if request.path == '/signup/' %}active{% endif %}" href="/signup">Signup</a></li>#}
+{#        {% if user.is_authenticated %}#}
+{#            <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>#}
+{#            <li><span class="dropdown-item disabled">You are already logged in. Please <a href="{% url 'logout' %}">logout</a> if you want to sign in with a different account.</span></li>#}
+{#        {% else %}#}
+{#            <li><a class="dropdown-item {% if request.path == '/signin/' %}active{% endif %}" href="/signin">Signin</a></li>#}
+{#        {% endif %}#}
+{#        <li><hr class="dropdown-divider"></li>#}
+
+              
+              
+              {#  code with condition that if user logged in he wont get option of sign in or sign up         #}
               {% if user.is_authenticated %}
+                  <p style="margin-bottom: 10px;margin-top: 10px;margin-left: 15px;margin-right: 10px;">You are already logged in. <br>
+                      <span style="display: block; margin-top: 5px;">Please <a href="{% url 'logout' %}">logout</a> if you want to sign in with a different account.</span>
+                  </p>
+        {% else %}
+            <li><a class="dropdown-item {% if request.path == '/signup/' %}active{% endif %}" href="/signup">Signup</a></li>
+            <li><a class="dropdown-item {% if request.path == '/signin/' %}active{% endif %}" href="/signin">Signin</a></li>
+        {% endif %}
+        <li><hr class="dropdown-divider"></li>
+        {% if user.is_authenticated %}
             <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
-              {% endif %}
+        {% endif %}
           </ul>
         </li>
         <li class="nav-item">
           <a class="nav-link disabled" aria-disabled="true">Disabled</a>
         </li>
       </ul>
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+      <form class="d-flex" action="{% url 'search_results' %}" method="GET">
+        <input class="form-control me-2" type="search" name="q" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success" type="submit">Search</button>
       </form>
     </div>
