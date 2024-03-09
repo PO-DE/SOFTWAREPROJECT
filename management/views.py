@@ -9,6 +9,9 @@ from django.contrib.auth import login, authenticate ,logout
 from .serializers import BookingSerializer
 from django.http import HttpResponseForbidden
 
+# ------------------------------------------------------
+from django.shortcuts import render, get_object_or_404
+
 def index(request):
     return render(request, 'index.html')
 # class PackageView(ListView):
@@ -100,9 +103,54 @@ def package_list(request):
     return render(request, 'package_list.html', {'packages': packages})
 
 # @login_required()
+
 def package_detail(request, pk):
     package = Package.objects.get(pk=pk)
     return render(request, 'package_detail.html', {'package': package})
+
+def package_detail(request, package_id):
+    package = Package.objects.get(pk=package_id)
+
+    # Define logic to retrieve images based on the destination
+    if package.destination == 'Toronto':
+        montreal_images = ['montreal1.jpg', 'montreal2.jpg','montreal3.jpeg','montreal4.jpeg']  # List of image filenames
+        context = {'package': package, 'montreal_images': montreal_images}
+    elif package.destination == 'Mumbai':
+        delhi_images = ['image3.jpg', 'image4.jpg']  # List of image filenames
+        context = {'package': package, 'delhi_images': delhi_images}
+    else:
+       # Handle other destinations
+        context = {'package': package}
+
+    return render(request, 'package_detail.html', context)
+
+#def package_detail(request, pk):
+#    package = Package.objects.get(pk=pk)
+#   return render(request, 'package_detail.html', {'package': package})
+
+# --------------------images working--------------------------
+#def package_detail(request, package_id):
+#    package = Package.objects.get(pk=package_id)
+
+    # Define logic to retrieve images based on the destination
+#    if package.destination == 'Toronto':
+#        montreal_images = ['montreal1.jpg', 'montreal2.jpg','montreal3.jpeg','montreal4.jpeg']  # List of image filenames
+#        context = {'package': package, 'montreal_images': montreal_images}
+#    elif package.destination == 'Mumbai':
+#        delhi_images = ['image3.jpg', 'image4.jpg']  # List of image filenames
+#        context = {'package': package, 'delhi_images': delhi_images}
+#    else:
+#       # Handle other destinations
+#        context = {'package': package}
+
+#    return render(request, 'package_detail.html', context)
+
+#def package_detail(request, pk):
+#    package = Package.objects.get(pk=pk)
+#   return render(request, 'package_detail.html', {'package': package})
+# ----------------------------------------------
+
+
 
 @login_required
 def package_create(request):
@@ -134,4 +182,10 @@ def forgotpassword(request):
         pass
     else:
         form = ForgotPasswordForm()
+
     return render(request, 'forgotpassword.html', {'form': form})
+
+    return render(request, 'forgotpassword.html', {'form': form})
+
+
+

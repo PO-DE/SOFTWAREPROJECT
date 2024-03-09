@@ -9,12 +9,21 @@
 {#    <div class="form-control" >#}
     <h1 align="center">Create Package </h1>
     <div class="form-control" >
+
         <form method="post">
             {% csrf_token %}
             {{ form.as_p }}
             <button type="submit">Save</button>
         </form>
         <a href="{% url 'package_list' %}">Cancel</a>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Save</button>
+    </form>
+    <a href="{% url 'package_list' %}">Cancel</a>
+
     </div>
     </div>
 {% endblock %}
