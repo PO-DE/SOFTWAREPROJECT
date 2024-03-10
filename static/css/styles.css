@@ -18,7 +18,7 @@
 label, input {
     width: 100%; /* Full width of their container */
 
-}
+}}
 
 button:hover{/*.signin-form button:hover {*/
     background-color: #0056b3;
