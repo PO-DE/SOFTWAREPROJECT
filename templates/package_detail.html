@@ -11,17 +11,78 @@
     <p>Description: {{ package.description }}</p>
     <p>Price: {{ package.price }}</p>
 
-
-     {#   <h2>Images</h2> #}
         <div class="image-container">
-        {% if package.destination == 'Toronto' %}
-        <!-- Display images for Montreal -->
-        {% for image in montreal_images %}
-            <img src="{% static 'img/montreal/' %}{{ image }}" alt="{{ package.destination }}">
-        {% endfor %}
-           
+            {% if package.destination == 'Mumbai' %}
+            <!-- Display images for Mumbai -->
+                {% for image in mumbai_images %}
+                <img src="{% static 'img/mumbai/' %}{{ image }}" alt="{{ package.destination }}">
+                {% endfor %}
+            {% endif %}
+            
+            {% if package.destination == 'Toronto' %}
+            <!-- Display images for TORONTO -->
+                {% for image in toronto_images %}
+                    <img src="{% static 'img/toronto/' %}{{ image }}" alt="{{ package.destination }}">
+                {% endfor %}
+            {% endif %}
+            
+            {% if package.destination == 'Vancouver' %}
+            <!-- Display images for VANCOUVER -->
+                {% for image in vancouver_images %}
+                    <img src="{% static 'img/vancouver/' %}{{ image }}" alt="{{ package.destination }}">
+                {% endfor %}
+            {% endif %}    
+        
+           {% if package.destination == 'Newyork' %}
+            <!-- Display images for NEW-YORK -->
+                {% for image in newyork_images %}
+                    <img src="{% static 'img/newyork/' %}{{ image }}" alt="{{ package.destination }}">
+                {% endfor %}
+           {% endif %}    
+        
+           {% if package.destination == 'Paris' %}
+            <!-- Display images for PARIS -->
+                {% for image in paris_images %}
+                    <img src="{% static 'img/paris/' %}{{ image }}" alt="{{ package.destination }}">
+                {% endfor %}
+            {% endif %}
+            
+            {% if package.destination == 'Mississauga' %}
+            <!-- Display images for MISSISSAUGA -->
+                {% for image in mississauga_images %}
+                    <img src="{% static 'img/mississauga/' %}{{ image }}" alt="{{ package.destination }}">
+                {% endfor %}
+            {% endif %}
+        
+           {% if package.destination == 'Calgary' %}
+            <!-- Display images for CALGARY -->
+                {% for image in calgary_images %}
+                    <img src="{% static 'img/calgary/' %}{{ image }}" alt="{{ package.destination }}">
+                {% endfor %}
+           {% endif %}    
+            
+            {% if package.destination == 'Alberta' %}
+            <!-- Display images for ALBERTA -->
+                {% for image in alberta_images %}
+                    <img src="{% static 'img/alberta/' %}{{ image }}" alt="{{ package.destination }}">
+                {% endfor %}
+            {% endif %}    
+       
+           {% if package.destination == 'Regina' %}
+            <!-- Display images for REGINA -->
+                {% for image in regina_images %}
+                    <img src="{% static 'img/regina/' %}{{ image }}" alt="{{ package.destination }}">
+                {% endfor %}
+           {% endif %}    
+       
+           {% if package.destination == 'Hamilton' %}
+               <!-- Display images for HAMILTON -->
+                {% for image in hamilton_images %}
+                    <img src="{% static 'img/hamilton/' %}{{ image }}" alt="{{ package.destination }}">
+                {% endfor %}
+           {% endif %}    
+        
         </div>
-    {% endif %}
 
     <a href="{% url 'package_list' %}" class="back-link">Back to Package List</a>
      <style>

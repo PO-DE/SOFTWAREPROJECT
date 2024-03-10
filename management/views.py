@@ -104,44 +104,31 @@ def package_list(request):
 def package_detail(request, package_id):
     package = Package.objects.get(pk=package_id)
 
-    # Define logic to retrieve images based on the destination
-    if package.destination == 'Toronto':
-        montreal_images = ['montreal1.jpg', 'montreal2.jpg','montreal3.jpeg','montreal4.jpeg']  # List of image filenames
-        context = {'package': package, 'montreal_images': montreal_images}
-    elif package.destination == 'Mumbai':
-        delhi_images = ['image3.jpg', 'image4.jpg']  # List of image filenames
-        context = {'package': package, 'delhi_images': delhi_images}
+    destination = package.destination
+
+    # dictionary used for list of images
+    destination_images = {
+        'Mumbai': ['mumbai1.jpg', 'mumbai2.jpg', 'mumbai3.jpg', 'mumbai4.jpg'],
+        'Toronto': ['toronto1.jpg', 'toronto2.jpg', 'toronto3.jpg', 'toronto4.jpg'],
+        'Vancouver': ['vancouver1.jpg', 'vancouver2.jpg', 'vancouver3.jpg', 'vancouver4.jpg'],
+        'Newyork': ['newyork1.jpg', 'newyork2.jpg', 'newyork3.jpg', 'newyork4.jpg'],
+        'Paris': ['paris1.jpg', 'paris2.jpg', 'paris3.jpg', 'paris4.jpg'],
+        'Mississauga': ['mississauga1.jpg', 'mississauga2.jpg', 'mississauga3.jpg', 'mississauga4.jpg'],
+        'Calgary': ['calgary1.jpg', 'calgary2.jpg', 'calgary3.jpg', 'calgary4.jpg'],
+        'Alberta': ['alberta1.jpg', 'alberta2.jpg', 'alberta3.jpg', 'alberta4.jpg'],
+        'Regina': ['regina1.jpg', 'regina2.jpg', 'regina3.jpg', 'regina4.jpg'],
+        'Hamilton': ['hamilton1.jpg', 'hamilton2.jpg', 'hamilton3.jpg', 'hamilton4.jpg']
+    }
+
+    # Check if the destination is in the dictionary
+    if destination in destination_images:
+        image_list = destination_images[destination]
+        context = {'package': package, destination.lower() + '_images': image_list}
     else:
-       # Handle other destinations
+        # Handle other destinations
         context = {'package': package}
 
     return render(request, 'package_detail.html', context)
-
-#def package_detail(request, pk):
-#    package = Package.objects.get(pk=pk)
-#   return render(request, 'package_detail.html', {'package': package})
-
-# --------------------images working--------------------------
-#def package_detail(request, package_id):
-#    package = Package.objects.get(pk=package_id)
-
-    # Define logic to retrieve images based on the destination
-#    if package.destination == 'Toronto':
-#        montreal_images = ['montreal1.jpg', 'montreal2.jpg','montreal3.jpeg','montreal4.jpeg']  # List of image filenames
-#        context = {'package': package, 'montreal_images': montreal_images}
-#    elif package.destination == 'Mumbai':
-#        delhi_images = ['image3.jpg', 'image4.jpg']  # List of image filenames
-#        context = {'package': package, 'delhi_images': delhi_images}
-#    else:
-#       # Handle other destinations
-#        context = {'package': package}
-
-#    return render(request, 'package_detail.html', context)
-
-#def package_detail(request, pk):
-#    package = Package.objects.get(pk=pk)
-#   return render(request, 'package_detail.html', {'package': package})
-# ----------------------------------------------
 
 
 @login_required
