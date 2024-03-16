@@ -1,3 +1,4 @@
+from django.contrib.auth.forms import PasswordResetForm
 from django.db.models import Q
 from django.shortcuts import render , redirect
 from datetime import datetime
@@ -8,6 +9,8 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, authenticate ,logout
 from .serializers import BookingSerializer
 from django.http import HttpResponseForbidden
+from django.contrib.auth.models import User
+from django.conf import settings
 
 # ------------------------------------------------------
 from django.shortcuts import render, get_object_or_404
@@ -87,18 +90,31 @@ def package_list(request):
     packages = Package.objects.all()
     return render(request, 'package_list.html', {'packages': packages})
 
-def package_detail(request, pk):
-    package = Package.objects.get(pk=pk)
+def package_detail(request, package_id):
+    package = Package.objects.get(pk=package_id)
 
-    # Define logic to retrieve images based on the destination
-    if package.destination == 'Toronto':
-        montreal_images = ['montreal1.jpg', 'montreal2.jpg','montreal3.jpeg','montreal4.jpeg']  # List of image filenames
-        context = {'package': package, 'montreal_images': montreal_images}
-    elif package.destination == 'Mumbai':
-        delhi_images = ['image3.jpg', 'image4.jpg']  # List of image filenames
-        context = {'package': package, 'delhi_images': delhi_images}
+    destination = package.destination
+
+    # dictionary used for list of images
+    destination_images = {
+        'Mumbai': ['mumbai1.jpg', 'mumbai2.jpg', 'mumbai3.jpg', 'mumbai4.jpg'],
+        'Toronto': ['toronto1.jpg', 'toronto2.jpg', 'toronto3.jpg', 'toronto4.jpg'],
+        'Vancouver': ['vancouver1.jpg', 'vancouver2.jpg', 'vancouver3.jpg', 'vancouver4.jpg'],
+        'Newyork': ['newyork1.jpg', 'newyork2.jpg', 'newyork3.jpg', 'newyork4.jpg'],
+        'Paris': ['paris1.jpg', 'paris2.jpg', 'paris3.jpg', 'paris4.jpg'],
+        'Mississauga': ['mississauga1.jpg', 'mississauga2.jpg', 'mississauga3.jpg', 'mississauga4.jpg'],
+        'Calgary': ['calgary1.jpg', 'calgary2.jpg', 'calgary3.jpg', 'calgary4.jpg'],
+        'Alberta': ['alberta1.jpg', 'alberta2.jpg', 'alberta3.jpg', 'alberta4.jpg'],
+        'Regina': ['regina1.jpg', 'regina2.jpg', 'regina3.jpg', 'regina4.jpg'],
+        'Hamilton': ['hamilton1.jpg', 'hamilton2.jpg', 'hamilton3.jpg', 'hamilton4.jpg']
+    }
+
+    # Check if the destination is in the dictionary
+    if destination in destination_images:
+        image_list = destination_images[destination]
+        context = {'package': package, destination.lower() + '_images': image_list}
     else:
-       # Handle other destinations
+        # Handle other destinations
         context = {'package': package}
 
     return render(request, 'package_detail.html', context)
@@ -130,11 +146,24 @@ def search_results(request):
 
 def forgotpassword(request):
     if request.method == 'POST':
-        # Handle form submission if needed
-        pass
+        form = PasswordResetForm(request.POST)
+        if form.is_valid():
+            email = form.cleaned_data['email']
+            associated_users = User.objects.filter(email=email)
+            if associated_users.exists():
+                for user in associated_users:
+                    form.save(
+                        request=request,
+                        use_https=request.is_secure(),
+                        from_email=settings.DEFAULT_FROM_EMAIL,
+                        email_template_name='registration/password_reset_email.html'
+                    )
+                # Redirect to a new URL:
+                return redirect('password_reset_done')
+            else:
+                form.add_error(None, "No user is associated with this email address")
     else:
-        form = ForgotPasswordForm()
-
+        form = PasswordResetForm()
     return render(request, 'forgotpassword.html', {'form': form})
 
 
