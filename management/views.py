@@ -1,3 +1,4 @@
+from django.contrib.auth.forms import PasswordResetForm
 from django.db.models import Q
 from django.shortcuts import render , redirect
 from datetime import datetime
@@ -8,6 +9,8 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, authenticate ,logout
 from .serializers import BookingSerializer
 from django.http import HttpResponseForbidden
+from django.contrib.auth.models import User
+from django.conf import settings
 
 # ------------------------------------------------------
 from django.shortcuts import render, get_object_or_404
@@ -87,8 +90,8 @@ def package_list(request):
     packages = Package.objects.all()
     return render(request, 'package_list.html', {'packages': packages})
 
-def package_detail(request, pk):
-    package = Package.objects.get(pk=pk)
+def package_detail(request, package_id):
+    package = Package.objects.get(pk=package_id)
 
     destination = package.destination
 
@@ -143,11 +146,24 @@ def search_results(request):
 
 def forgotpassword(request):
     if request.method == 'POST':
-        # Handle form submission if needed
-        pass
+        form = PasswordResetForm(request.POST)
+        if form.is_valid():
+            email = form.cleaned_data['email']
+            associated_users = User.objects.filter(email=email)
+            if associated_users.exists():
+                for user in associated_users:
+                    form.save(
+                        request=request,
+                        use_https=request.is_secure(),
+                        from_email=settings.DEFAULT_FROM_EMAIL,
+                        email_template_name='registration/password_reset_email.html'
+                    )
+                # Redirect to a new URL:
+                return redirect('password_reset_done')
+            else:
+                form.add_error(None, "No user is associated with this email address")
     else:
-        form = ForgotPasswordForm()
-
+        form = PasswordResetForm()
     return render(request, 'forgotpassword.html', {'form': form})
 
 
