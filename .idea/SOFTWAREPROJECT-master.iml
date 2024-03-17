@@ -14,11 +14,11 @@
   </component>
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$" />
-<<<<<<< HEAD
+
+    <orderEntry type="jdk" jdkName="djangoProject1" jdkType="Python SDK" />
+
     <orderEntry type="jdk" jdkName="djangoProject" jdkType="Python SDK" />
-=======
-    <orderEntry type="jdk" jdkName="Python 3.12" jdkType="Python SDK" />
->>>>>>> bafcb9d9e9c3cd19fd4b144c061459a778fd8f12
+
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
   <component name="PyDocumentationSettings">
