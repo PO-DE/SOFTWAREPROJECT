@@ -2,7 +2,7 @@ from django.urls import path , include
 from rest_framework import routers
 from . import views
 from django.contrib.auth import views as auth_views
-from .views import signup, signin, package_list, package_create, package_detail, Logout, search_results, BookingViewSet, \
+from .views import signup, signin, package_list, package_create, package_details, Logout, search_results, BookingViewSet, \
     forgotpassword
 
 urlpatterns = [
@@ -20,6 +20,6 @@ urlpatterns = [
     path('reset_password_sent/', auth_views.PasswordResetDoneView.as_view(), name='password_reset_done'),
     path('reset/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(), name='password_reset_confirm'),
     path('reset_password_complete/', auth_views.PasswordResetCompleteView.as_view(), name='password_reset_complete'),
-    path('package/<int:package_id>/', package_detail, name='package_detail'),
+    path('package/<int:package_id>/', package_details, name='package_details'),
 
 ]
