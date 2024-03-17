@@ -90,8 +90,8 @@ def package_list(request):
     packages = Package.objects.all()
     return render(request, 'package_list.html', {'packages': packages})
 
-def package_details(request, package_id):
-    package = Package.objects.get(pk=package_id)
+def package_details(request, pk):
+    package = Package.objects.get(pk=pk)
 
     destination = package.destination
 

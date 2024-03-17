@@ -8,7 +8,7 @@ from .views import signup, signin, package_list, package_create, package_details
 urlpatterns = [
     path('', views.index, name='index'),
     path('packagelist/', package_list, name='package_list'),
-    # path('package/<int:pk>/', package_detail, name='package_detail'),
+    path('package/<int:pk>/', package_details, name='package_detail'),
     path('package/create/', package_create, name='package_create'),
     path('signup/', signup, name='signup'),
     path('signin/', signin, name='signin'),
