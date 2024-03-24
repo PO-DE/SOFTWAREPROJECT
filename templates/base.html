@@ -33,43 +33,18 @@
             User
           </a>
           <ul class="dropdown-menu">
-          
-{#            <li><a class="dropdown-item {% if request.path == '/signup/' %}active{% endif %}" href="/signup">Signup</a></li>#}
-{#            <li><a class="dropdown-item {% if request.path == '/signin/' %}active{% endif %}" href="/signin">Signin</a></li>#}
-{#            <li><hr class="dropdown-divider"></li>#}
-{#              {% if user.is_authenticated %}#}
-{#            <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>#}
-{#              {% endif %}#}
-          
-{#          if logged in then cant log in again he has to logout first  that code #}
-{#              <li><a class="dropdown-item {% if request.path == '/signup/' %}active{% endif %}" href="/signup">Signup</a></li>#}
-{#        {% if user.is_authenticated %}#}
-{#            <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>#}
-{#            <li><span class="dropdown-item disabled">You are already logged in. Please <a href="{% url 'logout' %}">logout</a> if you want to sign in with a different account.</span></li>#}
-{#        {% else %}#}
-{#            <li><a class="dropdown-item {% if request.path == '/signin/' %}active{% endif %}" href="/signin">Signin</a></li>#}
-{#        {% endif %}#}
-{#        <li><hr class="dropdown-divider"></li>#}
-
-              
-              
-              {#  code with condition that if user logged in he wont get option of sign in or sign up         #}
               {% if user.is_authenticated %}
-                  <p style="margin-bottom: 10px;margin-top: 10px;margin-left: 15px;margin-right: 10px;">You are already logged in. <br>
-                      <span style="display: block; margin-top: 5px;">Please <a href="{% url 'logout' %}">logout</a> if you want to sign in with a different account.</span>
-                  </p>
-        {% else %}
-            <li><a class="dropdown-item {% if request.path == '/signup/' %}active{% endif %}" href="/signup">Signup</a></li>
-            <li><a class="dropdown-item {% if request.path == '/signin/' %}active{% endif %}" href="/signin">Signin</a></li>
-        {% endif %}
-        <li><hr class="dropdown-divider"></li>
-        {% if user.is_authenticated %}
-            <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
-        {% endif %}
+                <li><a class="dropdown-item" href="{% url 'view_profile' user.id %}">View Profile</a></li>
+                <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
+            {% else %}
+                <li><a class="dropdown-item" href="/signup">Signup</a></li>
+                <li><a class="dropdown-item" href="/signin">Signin</a></li>
+            {% endif %}
           </ul>
         </li>
+
         <li class="nav-item">
-          <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+          <a class="nav-link" >{{ user.first_name }}</a>
         </li>
       </ul>
       <form class="d-flex" action="{% url 'search_results' %}" method="GET">
