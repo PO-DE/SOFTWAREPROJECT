@@ -297,5 +297,42 @@ a {
     padding: 20px;
 }
 
+footer {
+  background-color: #ffebe6; /* Light pink background */
+  padding-bottom: 12px;
+    width: 100%;
+}
+
+footer h2 {
+  /*color: #333; !* Dark text color *!*/
+  padding-bottom: 5px;
+  margin-bottom: 20px;
+    text-align: center;
+  border-bottom: 2px solid #ffd966; /* Yellow bottom border */
+  /*display: inline-block;*/
+}
+
+footer p {
+  color: #dad9d9; /* Dark text color */
+  margin-top: 15px;
+    text-align: center;
+}
+
+/* Ensure the text in the contact details is aligned to the right */
+footer .col-lg-4:last-child {
+  text-align: right;
+}
+
+@media (max-width: 768px) {
+  /* For smaller screens, make sure the text is centered */
+  footer .col-md-6, footer .col-md-12 {
+    text-align: center;
+  }
+
+  /* Stack the columns vertically on smaller screens */
+  footer .col-lg-4 {
+    margin-bottom: 30px;
+  }
+}
 /* You can add more CSS styles here to match the look and feel of your site */
 

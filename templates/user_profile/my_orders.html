@@ -16,7 +16,7 @@
             <ul>
                 {% for order in orders %}
                     <li>
-                        Package: Montreal to {{ order.Package.destination }}
+                        Package: Montreal to {{order.Package.destination }}
                         <br>Date: {{ order.start_Date }} - {{ order.end_Date }}
                         <br>Booked on: {{ order.created_at }}
                     </li>
@@ -27,4 +27,5 @@
             <p>You are yet to book package with us!</p>
         {% endif %}
     </div>
+    <br><br><br><br>
 {% endblock %}
