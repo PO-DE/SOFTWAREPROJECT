@@ -20,7 +20,8 @@ def view_profile(request, user_id):
 #     return render(request, 'user_profile/my_orders.html', context)
 @login_required
 def my_orders(request, filter_by=None):
-    my_bookings = Booking.objects.filter(user=request.user)
+    # my_bookings = Booking.objects.filter(user=request.user)
+    my_bookings = Booking.objects.filter(customer_email=request.user.email)
 
     if filter_by == 'a_to_z':
         my_bookings = Booking.objects.order_by('Package__destination')  # Assuming 'Package' is the related name and 'destination' is a field on Package
