@@ -7,7 +7,7 @@
     <list default="true" id="d5a00d37-a8a2-4327-95f9-fada2b48d519" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/management/booking/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/management/booking/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/user_profile/my_orders.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user_profile/my_orders.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -118,8 +118,7 @@
       <updated>1711138175258</updated>
       <workItem from="1711138176762" duration="47898000" />
       <workItem from="1711305495816" duration="1157000" />
-      <workItem from="1711318933369" duration="4649000" />
-      <workItem from="1711384117012" duration="386000" />
+      <workItem from="1711318933369" duration="3672000" />
     </task>
     <servers />
   </component>
