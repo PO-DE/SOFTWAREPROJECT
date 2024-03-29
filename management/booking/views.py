@@ -12,15 +12,16 @@ from django.conf import settings
 from django.utils.dateformat import format
 
 
+
 @login_required
-def book_package(request, package_id):
-    package = get_object_or_404(Package, id=package_id)
+def book_package(request):
+    # package = get_object_or_404(Package, id=package_id)
     if request.method == 'POST':
         form = BookingForm(request.POST, package=Package)
         if form.is_valid():
             booking = form.save(commit=False)
             booking.user = request.user
-            booking.Package = package
+            # booking.Package = package
             booking.save()
 
             start_date_formatted = format(booking.start_Date, 'd-m-Y')
@@ -51,4 +52,6 @@ class BookingViewSet(viewsets.ModelViewSet):
     serializer_class = BookingSerializer
 
 def booking_success(request, booking_id):
-    return HttpResponse(f"Booking with ID {booking_id} was successful.")
+    # return HttpResponse(f"Booking with ID {booking_id} was successful.")
+    context = {'booking_id': booking_id}
+    return render(request,'package/package_list.html',context)

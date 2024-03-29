@@ -17,13 +17,21 @@
                 <h2 style="border: none">My Profile</h2>
                 <p>Edit your account information</p>
             </a>
-            <a href="{% url 'package_list' %}" class="account-section" id="as3">
-                <h2 style="border: none">Login & Security</h2>
-                <p>Change your password or secure your account</p>
+            <a href="{% url 'book_package' %}" class="account-section" id="as3">
+                <h2 style="border: none">Create Booking</h2>
+                <p>Want to create new booking?</p>
             </a>
             <a href="{% url 'all_bookings' %}" class="account-section" id="as4">
                 <h2 style="border: none">All Bookings</h2>
                 <p>Edit or see all bookings</p>
+            </a>
+            <a href="{% url 'package_create' %}" class="account-section" id="as5">
+                <h2 style="border: none">Create Package</h2>
+                <p>Want to create new package?</p>
+            </a>
+            <a href="{% url 'package_list' %}" class="account-section" id="as6">
+                <h2 style="border: none">All Packages</h2>
+                <p>Edit or see all packages</p>
             </a>
         </div>
     </div>
