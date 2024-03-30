@@ -5,18 +5,21 @@
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     <style>
         .card {
+            left: 50px;
             width: 275px;
             height: 270px;
-            border: 1px solid #ccc;
+            border: 1px solid rgba(212, 243, 238, 0.8);
             border-radius: 5px;
             margin: 15px;
             display: inline-block;
+            position: relative;
             transition: transform 0.3s;
             overflow: hidden;
-            box-shadow: 0 45px 65px rgba(0,0,0,0.50), 0 35px 22px rgba(0,0,0,0.16);
+            box-shadow: 0 45px 65px rgba(89, 83, 83, 0.5), 0 35px 22px rgba(155, 152, 152, 0.16);
         }
         .card:hover {
             transform: scale(1.05);
+            background-image: linear-gradient(#ffffff, #f8f8de, #f1d3da);
         }
         .card img {
             width: 100%;
@@ -24,7 +27,9 @@
         }
         .heading {
             text-align: center;
-            font-size:50px; font-weight:450; letter-spacing:1px;
+            font-size: 50px;
+            font-weight: 450;
+            letter-spacing: 1px;
             text-transform: uppercase;
             display: grid;
             grid-template-columns: 1fr max-content 1fr;
@@ -32,26 +37,39 @@
             grid-gap: 20px;
             align-items: center;
         }
-
-        .heading:after,.heading:before {
+        .heading:after, .heading:before {
             content: " ";
             display: block;
             border-bottom: 1px solid #c50000;
             border-top: 1px solid #c50000;
             height: 5px;
-            background-color:#f8f8f8;
-}
-        
+            background-color: #f8f8f8;
+        }
+        .price {
+            font-size: 20px;
+            text-align: right;
+            position: absolute;
+            top: 210px;
+            right: 5px;
+            background-color: rgba(219, 252, 246, 0.8);
+            padding: 5px;
+            border-bottom-left-radius: 5px;
+        }
+        .destination_name {
+            font-size: 22px;
+            color: #940b64;
+            font-family: franklin;
+        }
     </style>
 {% endblock %}
 
 {% block body %}
     {% if booking_id %}
         <div class="alert alert-primary" role="alert" id="bookingAlert">
-            <center>Booking with ID {{ booking_id }} was successful.</center> 
+            <center>Booking with ID {{ booking_id }} was successful.</center>
         </div>
         <script>
-            setTimeout(function() {
+            setTimeout(function () {
                 document.getElementById('bookingAlert').style.display = 'none';
             }, 3000);
         </script>
@@ -60,15 +78,16 @@
     <div class="card-container">
         {% for package in packages %}
             <div class="card">
-                <a href="{% url 'package_detail' package.pk %}">
+                <a href="{% url 'package_detail' package.pk %}" class="destination_name">
                     <img src="{% static 'img/' %}{{ package.destination|lower }}.jpg" alt="{{ package.destination }}">
                 </a>
+                <p class="price">${{ package.price }}</p>
                 <div class="card-body">
                     <a href="{% url 'package_detail' package.pk %}" class="destination_name">{{ package.destination }}</a>
                 </div>
             </div>
         {% endfor %}
     </div>
-    <a href="{% url 'package_create' %}" style="margin-left: 20px;">Create New Package</a>
+    <a href="{% url 'package_create' %}" style="margin-left: 20px; font-size: 18px;">Create New Package</a>
     <br><br><br><br>
 {% endblock %}
