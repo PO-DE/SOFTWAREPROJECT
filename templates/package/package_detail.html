@@ -17,7 +17,7 @@
 
 {% block content %}
 
-    <h1>Montreal To {{ package.destination }}</h1>
+    <h1 >Montreal To {{ package.destination }}</h1>
 
     <br>
     <div class="image-container">
@@ -114,18 +114,27 @@
 
     <a href="{% url 'package_list' %}" class="back-link">Back to Package List</a>
     <style>
-        /* CSS styles for images and other elements */
-        .image-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-evenly;
-        }
 
-        .image-container img {
-            width: 350px;
-            height: auto;
-            margin: 1px;
-        }
+           /* CSS styles for images and
+``` other elements */
+    .image-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+    }
+
+    .image-container img {
+        width: 350px;
+        height: auto;
+        margin: 1px;
+        {#transition: transform 0.3s ease;#}
+    }
+
+    .image-container img:hover {
+        transform: scale(1.1);
+    }
+
+
     </style>
 <br><br><br><br>
 {% endblock %}

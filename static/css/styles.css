@@ -157,7 +157,7 @@ nav ul li a.current {
 
 /*!*package details page css*!*/
 h1 {
-    color: blue;
+    color: #5858c4;
     padding-left: 30px;
     padding-top: 15px;
     padding-bottom: 5px;
@@ -196,6 +196,9 @@ a.back-link {
 
 a {
     /*margin-left: 20px;*/
+    text-decoration: none;
+    font-size: larger;
+    /*text-align: center;*/
 }
 
 .account-page {

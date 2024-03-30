@@ -11,6 +11,7 @@ from django.utils.dateformat import format
 from django.urls import reverse
 
 
+
 @login_required
 def book_package(request):
     # package = get_object_or_404(Package, id=package_id)
@@ -50,6 +51,7 @@ class BookingViewSet(viewsets.ModelViewSet):
     serializer_class = BookingSerializer
 
 def booking_success(request, booking_id):
+
     is_staff_or_agent = request.user.is_staff or request.user.groups.filter(name='agent').exists()
 
     # Determine the redirect URL based on the user's status
@@ -63,4 +65,4 @@ def booking_success(request, booking_id):
         'redirect_url': redirect_url,
     }
     return render(request, 'booking/booking_success.html', context)
-    # return HttpResponse(f"Booking with ID {booking_id} was successful.")
+
