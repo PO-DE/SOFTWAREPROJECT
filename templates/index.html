@@ -36,6 +36,13 @@
             display: flex;
             flex-direction: column; /* Stack body content vertically */
             justify-content: space-between; /* Space between content and button */
+            {#margin-left: 0px;#}
+        }
+
+        .p-index .card-body .card-text{
+            margin-left: 0px;
+            margin-top: 5px;
+            margin-bottom: 15px;
         }
 
         .p-index .btn-primary {
@@ -53,6 +60,7 @@
         .mb-4{
             text-align: justify;
             margin-left: 0px;
+            margin-bottom: 2.5rem!important;
         }
 
         .see-all-packages-btn-container {
@@ -190,7 +198,7 @@
                 <div class="card mb-3">
                     {% if package_alberta %}
                     <div class="card h-100">
-                        <img src="{% static 'img/alberta/alberta4.jpg' %}" class="card-img-top" alt="Alberta, Canada">
+                        <img src="{% static 'img/alberta.jpg' %}" class="card-img-top" alt="Alberta, Canada">
                         <div class="card-body">
                             <h5 class="card-title">Alberta, Canada</h5>
 {#                            <p class="card-text">7 Days Trip</p>#}

@@ -40,7 +40,7 @@
                            aria-expanded="false">
                             {{ user.first_name }}
                         </a>
-                        <ul class="dropdown-menu">
+                        <ul class="dropdown-menu" style="font-size: smaller;">
                             <li><a class="dropdown-item" href="{% url 'view_profile' user.id %}">View Profile</a></li>
                             <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
                         </ul>
@@ -49,7 +49,7 @@
                            href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             User
                         </a>
-                        <ul class="dropdown-menu">
+                        <ul class="dropdown-menu" style="font-size: smaller;">
                             <li><a class="dropdown-item" href="/signup">Signup</a></li>
                             <li><a class="dropdown-item" href="/signin">Signin</a></li>
                         </ul>
