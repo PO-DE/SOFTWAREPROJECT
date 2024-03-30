@@ -114,6 +114,7 @@
 
     <a href="{% url 'package_list' %}" class="back-link">Back to Package List</a>
     <style>
+<<<<<<< HEAD
            /* CSS styles for images and
 ``` other elements */
     .image-container {
@@ -133,6 +134,20 @@
         transform: scale(1.1);
     }
     
+=======
+        /* CSS styles for images and other elements */
+        .image-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+        }
+
+        .image-container img {
+            width: 350px;
+            height: auto;
+            margin: 1px;
+        }
+>>>>>>> 159bffc599a93fd0ff88d8401870b4c7cac74d1d
     </style>
 <br><br><br><br>
 {% endblock %}

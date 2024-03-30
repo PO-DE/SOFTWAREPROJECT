@@ -157,6 +157,10 @@ nav ul li a.current {
 
 /*!*package details page css*!*/
 h1 {
+<<<<<<< HEAD
+=======
+    color: blue;
+>>>>>>> 159bffc599a93fd0ff88d8401870b4c7cac74d1d
     padding-left: 30px;
     padding-top: 15px;
     padding-bottom: 5px;
@@ -390,5 +394,3 @@ td {
 .form-container {
     padding-right: 7%; /* Represents the empty space */
 }
-
-
