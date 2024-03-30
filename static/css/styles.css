@@ -262,6 +262,14 @@ a {
     background-color: rgba(0, 128, 0, 0.34);
 }
 
+#as5 {
+    background-color: rgba(0, 255, 51, 0.34);
+}
+
+#as6 {
+    background-color: rgba(0, 98, 128, 0.34);
+}
+
 .account-section h2 {
     margin: 0;
     font-size: 40px;
@@ -355,6 +363,11 @@ main {
 }
 
 .all_booking_table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.all_package_table {
     width: 100%;
     border-collapse: collapse;
 }

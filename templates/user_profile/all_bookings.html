@@ -29,6 +29,7 @@
                 <th>Travel Date</th>
                 <th>Package</th>
                 <th>Package Price</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -40,6 +41,7 @@
                 <td>{{ booking.start_Date }} - {{ booking.end_Date }}</td>
                 <td>{{ booking.Package.destination }}</td> <!-- Assuming there's a 'name' field in your Package model -->
                 <td>{{ booking.Package.price }}</td> <!-- Assuming there's a 'price' field in your Package model -->
+                <td style="text-align: center;"><a href="{% url 'booking_update' booking.id %}" class="edit-action"><i class="fas fa-edit"></i></a></td>
             </tr>
             {% endfor %}
         </tbody>

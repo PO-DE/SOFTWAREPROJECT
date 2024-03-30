@@ -1,5 +1,3 @@
-from django.http import HttpResponse
-from django.shortcuts import get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, render
 from management.booking.forms import BookingForm
@@ -10,17 +8,18 @@ from management.package.models import Package
 from django.core.mail import send_mail
 from django.conf import settings
 from django.utils.dateformat import format
+from django.urls import reverse
 
 
 @login_required
-def book_package(request, package_id):
-    package = get_object_or_404(Package, id=package_id)
+def book_package(request):
+    # package = get_object_or_404(Package, id=package_id)
     if request.method == 'POST':
         form = BookingForm(request.POST, package=Package)
         if form.is_valid():
             booking = form.save(commit=False)
             booking.user = request.user
-            booking.Package = package
+            # booking.Package = package
             booking.save()
 
             start_date_formatted = format(booking.start_Date, 'd-m-Y')
@@ -51,4 +50,17 @@ class BookingViewSet(viewsets.ModelViewSet):
     serializer_class = BookingSerializer
 
 def booking_success(request, booking_id):
-    return HttpResponse(f"Booking with ID {booking_id} was successful.")
+    is_staff_or_agent = request.user.is_staff or request.user.groups.filter(name='agent').exists()
+
+    # Determine the redirect URL based on the user's status
+    if is_staff_or_agent:
+        redirect_url = reverse('index')  # Use the name of your home page view
+    else:
+        redirect_url = reverse('my_orders')  # Use the namespaced URL for "my orders"
+
+    context = {
+        'booking_id': booking_id,
+        'redirect_url': redirect_url,
+    }
+    return render(request, 'booking/booking_success.html', context)
+    # return HttpResponse(f"Booking with ID {booking_id} was successful.")

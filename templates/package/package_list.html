@@ -2,9 +2,6 @@
 
 {% extends 'base.html' %}
 {% load static %}
-{#{% block title %}#}
-{#    Package List#}
-{#{% endblock title %}#}
 
 <h1> Package List</h1>
 
@@ -19,7 +16,7 @@
             <li><a href="{% url 'package_detail' package.pk %}">{{ package.destination }}</a></li>
         {% endfor %}
     </ul>
-            <a href="{% url 'package_create' %}" style="margin-left: 20px;">Create New Package</a>
+{#            <a href="{% url 'package_create' %}" style="margin-left: 20px;">Create New Package</a>#}
     <br><br><br><br>
 {% endblock %}
 
