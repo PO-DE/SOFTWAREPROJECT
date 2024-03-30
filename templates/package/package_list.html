@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <style>
+        .card {
+            width: 275px;
+            height: 270px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin: 15px;
+            display: inline-block;
+            transition: transform 0.3s;
+            overflow: hidden;
+            box-shadow: 0 45px 65px rgba(0,0,0,0.50), 0 35px 22px rgba(0,0,0,0.16);
+        }
+        .card:hover {
+            transform: scale(1.05);
+        }
+        .card img {
+            width: 100%;
+            height: 200px;
+        }
+        .heading {
+            text-align: center;
+            font-size:50px; font-weight:450; letter-spacing:1px;
+            text-transform: uppercase;
+            display: grid;
+            grid-template-columns: 1fr max-content 1fr;
+            grid-template-rows: 27px 0;
+            grid-gap: 20px;
+            align-items: center;
+        }
+
+        .heading:after,.heading:before {
+            content: " ";
+            display: block;
+            border-bottom: 1px solid #c50000;
+            border-top: 1px solid #c50000;
+            height: 5px;
+            background-color:#f8f8f8;
+}
+        
+    </style>
+{% endblock %}
+
+{% block body %}
+    {% if booking_id %}
+        <div class="alert alert-primary" role="alert" id="bookingAlert">
+            <center>Booking with ID {{ booking_id }} was successful.</center> 
+        </div>
+        <script>
+            setTimeout(function() {
+                document.getElementById('bookingAlert').style.display = 'none';
+            }, 3000);
+        </script>
+    {% endif %}
+    <h1 class="heading">Travel Bundles</h1>
+    <div class="card-container">
+        {% for package in packages %}
+            <div class="card">
+                <a href="{% url 'package_detail' package.pk %}">
+                    <img src="{% static 'img/' %}{{ package.destination|lower }}.jpg" alt="{{ package.destination }}">
+                </a>
+                <div class="card-body">
+                    <a href="{% url 'package_detail' package.pk %}" class="destination_name">{{ package.destination }}</a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    <a href="{% url 'package_create' %}" style="margin-left: 20px;">Create New Package</a>
+    <br><br><br><br>
+{% endblock %}
