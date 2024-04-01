@@ -157,7 +157,7 @@ nav ul li a.current {
 
 /*!*package details page css*!*/
 h1 {
-    color: blue;
+    color: #5858c4;
     padding-left: 30px;
     padding-top: 15px;
     padding-bottom: 5px;
@@ -196,6 +196,9 @@ a.back-link {
 
 a {
     /*margin-left: 20px;*/
+    text-decoration: none;
+    font-size: larger;
+    /*text-align: center;*/
 }
 
 .account-page {
@@ -262,6 +265,14 @@ a {
     background-color: rgba(0, 128, 0, 0.34);
 }
 
+#as5 {
+    background-color: rgba(0, 255, 51, 0.34);
+}
+
+#as6 {
+    background-color: rgba(0, 98, 128, 0.34);
+}
+
 .account-section h2 {
     margin: 0;
     font-size: 40px;
@@ -298,41 +309,93 @@ a {
 }
 
 footer {
-  background-color: #ffebe6; /* Light pink background */
-  padding-bottom: 12px;
-    width: 100%;
+    margin-top: auto;
 }
 
 footer h2 {
-  /*color: #333; !* Dark text color *!*/
-  padding-bottom: 5px;
-  margin-bottom: 20px;
+    /*color: #333; !* Dark text color *!*/
+    padding-bottom: 5px;
+    margin-bottom: 20px;
     text-align: center;
-  border-bottom: 2px solid #ffd966; /* Yellow bottom border */
-  /*display: inline-block;*/
+    border-bottom: 2px solid #ffd966; /* Yellow bottom border */
+    /*display: inline-block;*/
 }
 
 footer p {
-  color: #dad9d9; /* Dark text color */
-  margin-top: 15px;
+    color: #dad9d9; /* Dark text color */
+    margin-top: 15px;
     text-align: center;
 }
 
 /* Ensure the text in the contact details is aligned to the right */
 footer .col-lg-4:last-child {
-  text-align: right;
+    text-align: right;
 }
 
 @media (max-width: 768px) {
-  /* For smaller screens, make sure the text is centered */
-  footer .col-md-6, footer .col-md-12 {
-    text-align: center;
-  }
+    /* For smaller screens, make sure the text is centered */
+    footer .col-md-6, footer .col-md-12 {
+        text-align: center;
+    }
 
-  /* Stack the columns vertically on smaller screens */
-  footer .col-lg-4 {
-    margin-bottom: 30px;
-  }
+    /* Stack the columns vertically on smaller screens */
+    footer .col-lg-4 {
+        margin-bottom: 30px;
+    }
 }
+
+html, body {
+    height: 100%; /* Set the body to 100% of the viewport height */
+}
+
+body {
+    display: flex; /* Enable flex on the body */
+    flex-direction: column; /* Stack flex children vertically */
+}
+
+main {
+    flex: 1; /* Allow main to expand and fill available space */
+}
+
 /* You can add more CSS styles here to match the look and feel of your site */
 
+.table-container {
+    width: 65%;
+    margin: auto;
+    text-align: justify;
+}
+
+.all_booking_table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.all_package_table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid black;
+    text-align: left;
+    padding: 8px;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+td {
+    text-align: justify;
+}
+.form-row {
+    display: flex; /* This will make your form elements align in a row */
+    /*justify-content: center; !* This centers the form in the middle of the page *!*/
+    margin-bottom: 20px; /* Adds some space below the form */
+}
+.input-field, .submit-btn {
+    margin: 0 10px; /* Adds some space between the input field and the button */
+}
+.form-container {
+    padding-right: 7%; /* Represents the empty space */
+}

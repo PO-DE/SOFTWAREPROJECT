@@ -2,8 +2,10 @@
 
 from django.urls import path
 from .views import book_package, booking_success
+from management.user_profile.views import my_orders
 
 urlpatterns = [
-    path('package/<int:package_id>/book/', book_package, name='book_package'),
+    path('book/', book_package, name='book_package'),
     path('booking/success/<int:booking_id>/', booking_success, name='booking_success'),
+    # path('user_profile/my_orders', my_orders, name='my_order'),
 ]
