@@ -1,0 +1,264 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load custom_filters %}
+
+{% block title %}
+    Package Detail
+{% endblock %}
+
+{% block css %}
+
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient( to bottom, #fff8f8, #f1f6e6, #dcece8);
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1350px;
+            margin: 20px auto;
+            padding: 20px;
+            background: linear-gradient( #e1f5f1, #effdfa, #e7fcf7);
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgb(76, 196, 172);
+        }
+
+        .image-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .image-container img {
+            max-width: 100%;
+            width: 320px;
+            height: 280px;
+            border-radius: 8px;
+          box-shadow: 0 8px 20px rgb(144, 232, 58);
+            transition: transform 0.3s;
+        }
+
+        .image-container img:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 20px rgb(169, 7, 74);
+        }
+
+        .description, .activities, .price {
+             background: linear-gradient( #f6f8f8, #f5fdfb, #e9f8f3);
+            padding: 20px;
+            margin-top: 20px;
+            margin-left: 10px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(101, 95, 95, 0.1);
+        }
+
+        .description p, .activities p {
+            font-size: 20px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .description li, .activities li {
+            font-size: 18px;
+            color: #555;
+            margin-bottom: 5px;
+        }
+
+       /* Adjust the price box to display price horizontally in one line */
+        .price {
+            display: inline-block;
+            padding: 20px;
+            background: radial-gradient( #69a12a, #5b9815, #51861a, #346403, #2f5b02);
+            color: #fff; /* Set text color to white */
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            font-size: 20px;
+            margin-top: 30px;
+            position: relative;
+            overflow: hidden;
+            width: 250px; /* Set a fixed width for the price container */
+            height: 90px;
+        }
+
+        .price p {
+            margin: 0;
+            font-weight: bold;
+            white-space: nowrap; /* Ensure price text stays in one line */
+        }
+
+        .price span {
+            font-weight: bold;
+            font-size: 24px;
+            margin-right: 5px; /* Add spacing between price and currency */
+        }
+
+    /* Adjust the decorative element above the price */
+        .price::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 0;
+            width: 100%;
+            height: 20px;
+            background: radial-gradient( #69a12a, #5b9815, #51861a, #346403, #2f5b02);
+        }
+
+        .price::after {
+            content: 'Limited Time Offer';
+            display: block;
+            font-size: 14px;
+            color: #fff;
+            margin-top: 10px;
+        }
+        .btn-primary {
+            display: block;
+            width: 300px;
+            margin: 30px auto;
+            padding: 12px 24px;
+            background: linear-gradient(to right, #34a1d2, #266ebb, #053972);
+            color: #fff;
+            text-align: center;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .btn-primary:hover {
+           background: linear-gradient(to right, #fc7c99, #c2274b, #a4072c);
+        }
+
+        .back-link {
+            display: block;
+            text-align: center;
+            font-size: 18px;
+            margin-top: 20px;
+            color: rgba(4, 28, 148, 0.8);
+            text-decoration: none;
+        }
+        .back-link:hover {
+             color: rgba(166, 7, 67, 0.8);
+        }
+        h1 {
+            margin: 40px auto;
+            font-family: 'Ubuntu', sans-serif;
+            font-size: 55px;
+            font-weight: bold;
+            color: #121c6e;
+            text-transform: uppercase;
+            text-align: center;
+            letter-spacing: 5px;
+            text-shadow: 3px 4px 7px rgba(115, 96, 34, 0.8);
+        }
+
+    </style>
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1>Montreal To {{ package.destination }}</h1>
+
+       <div class="image-container">
+        {% if package.destination == 'Mumbai' %}
+            <!-- Display images for Mumbai -->
+            {% for image in mumbai_images %}
+                <img src="{% static 'img/mumbai/' %}{{ image }}" alt="{{ package.destination }}">
+            {% endfor %}
+        {% endif %}
+
+        {% if package.destination == 'Toronto' %}
+            <!-- Display images for TORONTO -->
+            {% for image in toronto_images %}
+                <img src="{% static 'img/toronto/' %}{{ image }}" alt="{{ package.destination }}">
+            {% endfor %}
+        {% endif %}
+
+        {% if package.destination == 'Vancouver' %}
+            <!-- Display images for VANCOUVER -->
+            {% for image in vancouver_images %}
+                <img src="{% static 'img/vancouver/' %}{{ image }}" alt="{{ package.destination }}">
+            {% endfor %}
+        {% endif %}
+
+        {% if package.destination == 'Newyork' %}
+            <!-- Display images for NEW-YORK -->
+            {% for image in newyork_images %}
+                <img src="{% static 'img/newyork/' %}{{ image }}" alt="{{ package.destination }}">
+            {% endfor %}
+        {% endif %}
+
+        {% if package.destination == 'Paris' %}
+            <!-- Display images for PARIS -->
+            {% for image in paris_images %}
+                <img src="{% static 'img/paris/' %}{{ image }}" alt="{{ package.destination }}">
+            {% endfor %}
+        {% endif %}
+
+        {% if package.destination == 'Mississauga' %}
+            <!-- Display images for MISSISSAUGA -->
+            {% for image in mississauga_images %}
+                <img src="{% static 'img/mississauga/' %}{{ image }}" alt="{{ package.destination }}">
+            {% endfor %}
+        {% endif %}
+
+        {% if package.destination == 'Calgary' %}
+            <!-- Display images for CALGARY -->
+            {% for image in calgary_images %}
+                <img src="{% static 'img/calgary/' %}{{ image }}" alt="{{ package.destination }}">
+            {% endfor %}
+        {% endif %}
+
+        {% if package.destination == 'Alberta' %}
+            <!-- Display images for ALBERTA -->
+            {% for image in alberta_images %}
+                <img src="{% static 'img/alberta/' %}{{ image }}" alt="{{ package.destination }}">
+            {% endfor %}
+        {% endif %}
+
+        {% if package.destination == 'Regina' %}
+            <!-- Display images for REGINA -->
+            {% for image in regina_images %}
+                <img src="{% static 'img/regina/' %}{{ image }}" alt="{{ package.destination }}">
+            {% endfor %}
+        {% endif %}
+
+        {% if package.destination == 'Hamilton' %}
+            <!-- Display images for HAMILTON -->
+            {% for image in hamilton_images %}
+                <img src="{% static 'img/hamilton/' %}{{ image }}" alt="{{ package.destination }}">
+            {% endfor %}
+        {% endif %}
+
+    </div>
+
+        <div class="description">
+            <p>Description:</p>
+            <ul>
+                {% for description in package.description|split:"," %}
+                    <li>{{ description }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="activities">
+            <p>Activities:</p>
+            <ul>
+                {% for activity in package.activities|split:"," %}
+                    <li>{{ activity }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="price">
+            <p>Price:<span>{{ package.price }}</span> CAD</p>
+        </div>
+
+        <a href="{% url 'book_package'%}" class="btn-primary">Book This Package</a>
+
+        <a href="{% url 'package_list' %}" class="back-link">Back to Package List</a>
+    </div>
+{% endblock %}
