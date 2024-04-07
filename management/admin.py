@@ -1,8 +1,15 @@
 from django.contrib import admin
+<<<<<<< HEAD
 from management.package.models import Package
 # Register your models here.
 from django.contrib import admin
 from management.booking.models import Booking
+=======
+from .models import Package
+# Register your models here.
+from django.contrib import admin
+from .models import Booking
+>>>>>>> 7534b29360cfcec71acd477de69076415c82222d
 
 
 # admin.site.register(Package)
@@ -21,6 +28,12 @@ class BookingAdmin(admin.ModelAdmin):
 
 @admin.register(Package)
 class PackageAdmin(admin.ModelAdmin):
+<<<<<<< HEAD
     list_display = ('destination','price')
     list_filter = ('destination','price')
     search_fields = ('destination','price')
+=======
+    list_display = ('source', 'destination')
+    list_filter = ('source', 'destination')
+    search_fields = ('source' , 'destination')
+>>>>>>> 7534b29360cfcec71acd477de69076415c82222d

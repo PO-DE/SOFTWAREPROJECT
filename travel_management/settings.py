@@ -39,8 +39,13 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'management',
+<<<<<<< HEAD
     # 'django_filters',
     # 'notifications'
+=======
+    'django_filters',
+    'notifications'
+>>>>>>> 7534b29360cfcec71acd477de69076415c82222d
 ]
 
 MIDDLEWARE = [
@@ -116,6 +121,7 @@ USE_I18N = True
 USE_TZ = True
 
 
+<<<<<<< HEAD
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
@@ -129,6 +135,12 @@ EMAIL_HOST_PASSWORD = 'xxxc siht whrn dhxu'
 
 STATIC_URL = '/static/'
 
+=======
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/5.0/howto/static-files/
+
+STATIC_URL = 'static/'
+>>>>>>> 7534b29360cfcec71acd477de69076415c82222d
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field

@@ -20,7 +20,11 @@ label, input {
 
 }
 
+<<<<<<< HEAD
 button:hover { /*.signin-form button:hover {*/
+=======
+button:hover{/*.signin-form button:hover {*/
+>>>>>>> 7534b29360cfcec71acd477de69076415c82222d
     background-color: #0056b3;
 
 }
@@ -62,6 +66,7 @@ button:hover { /*.signin-form button:hover {*/
 }
 
 
+<<<<<<< HEAD
 /* forgot PW page css */
 
 .forgot-password-form {
@@ -99,6 +104,8 @@ button:hover { /*.signin-form button:hover {*/
 }
 
 
+=======
+>>>>>>> 7534b29360cfcec71acd477de69076415c82222d
 /* signup page css */
 
 .signup-form {
@@ -114,7 +121,10 @@ button:hover { /*.signin-form button:hover {*/
     border-radius: 5px;
     margin-bottom: 30px;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 7534b29360cfcec71acd477de69076415c82222d
 .signup-form h3 {
     position: absolute;
     top: 50%;
@@ -151,23 +161,36 @@ button:hover { /*.signin-form button:hover {*/
 
 /* Style for the current page link */
 nav ul li a.current {
+<<<<<<< HEAD
     color: #bab0b0; /* Change color as needed */
     font-weight: bold; /* Add other styles as needed */
+=======
+  color: #bab0b0; /* Change color as needed */
+  font-weight: bold; /* Add other styles as needed */
+>>>>>>> 7534b29360cfcec71acd477de69076415c82222d
 }
 
 /*!*package details page css*!*/
 h1 {
+<<<<<<< HEAD
     color: #5858c4;
+=======
+    color: blue;
+>>>>>>> 7534b29360cfcec71acd477de69076415c82222d
     padding-left: 30px;
     padding-top: 15px;
     padding-bottom: 5px;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 7534b29360cfcec71acd477de69076415c82222d
 h2 {
     margin: 50px;
     border: solid;
     border-color: #0056b3;
 }
+<<<<<<< HEAD
 
 .description,
 p {
@@ -175,10 +198,18 @@ p {
     color: #666;
 }
 
+=======
+.description,
+p {
+    margin-left: 30px ;
+    color: #666;
+}
+>>>>>>> 7534b29360cfcec71acd477de69076415c82222d
 dl, ol, ul {
     margin-top: 0;
     margin-bottom: 1.2rem;
 }
+<<<<<<< HEAD
 
 ol, ul {
     padding-left: 3rem;
@@ -188,11 +219,20 @@ a.back-link:hover {
     margin-left: 30px;
 }
 
+=======
+ol, ul {
+    padding-left: 3rem;
+}
+a.back-link:hover {
+    margin-left: 30px;
+}
+>>>>>>> 7534b29360cfcec71acd477de69076415c82222d
 a.back-link {
     color: #007bff;
     text-decoration: none;
     margin-left: 30px;
 }
+<<<<<<< HEAD
 
 a {
     /*margin-left: 20px;*/
@@ -399,3 +439,5 @@ td {
 .form-container {
     padding-right: 7%; /* Represents the empty space */
 }
+=======
+>>>>>>> 7534b29360cfcec71acd477de69076415c82222d
