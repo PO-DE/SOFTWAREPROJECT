@@ -2,7 +2,7 @@ from django.contrib import admin
 from management.package.models import Package
 # Register your models here.
 from django.contrib import admin
-from management.booking.models import Booking
+from management.booking.models import Booking,Flight, Hotel, Activity
 
 
 # admin.site.register(Package)
@@ -24,3 +24,10 @@ class PackageAdmin(admin.ModelAdmin):
     list_display = ('destination','price')
     list_filter = ('destination','price')
     search_fields = ('destination','price')
+
+
+
+
+admin.site.register(Flight)
+admin.site.register(Hotel)
+admin.site.register(Activity)

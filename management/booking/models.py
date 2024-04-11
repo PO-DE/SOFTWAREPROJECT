@@ -20,3 +20,19 @@ class Booking(models.Model):
         # Don't allow end_date to be before start_date
         if self.end_Date and self.start_Date and self.end_Date <= self.start_Date:
             raise ValidationError(_('The end date cannot be before or the same as the start date.'))
+
+
+
+class Flight(models.Model):
+    name = models.CharField(max_length=100)
+    departure_city = models.CharField(max_length=50)
+    arrival_city = models.CharField(max_length=50)
+    price = models.DecimalField(max_digits=6, decimal_places=2)
+class Hotel(models.Model):
+    name = models.CharField(max_length=100)
+    city = models.CharField(max_length=50)
+    price_per_night = models.DecimalField(max_digits=6, decimal_places=2)
+class Activity(models.Model):
+    name = models.CharField(max_length=100)
+    city = models.CharField(max_length=50)
+    price = models.DecimalField(max_digits=6, decimal_places=2)
