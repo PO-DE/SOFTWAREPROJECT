@@ -2,7 +2,7 @@ from django.contrib import admin
 from management.package.models import Package
 # Register your models here.
 from django.contrib import admin
-from management.booking.models import Booking,Flight, Hotel, Activity
+from management.booking.models import Booking,Flights, Hotels, Activities
 
 
 # admin.site.register(Package)
@@ -28,6 +28,6 @@ class PackageAdmin(admin.ModelAdmin):
 
 
 
-admin.site.register(Flight)
-admin.site.register(Hotel)
-admin.site.register(Activity)
+admin.site.register(Flights)
+admin.site.register(Hotels)
+admin.site.register(Activities)

@@ -23,16 +23,16 @@ class Booking(models.Model):
 
 
 
-class Flight(models.Model):
+class Flights(models.Model):
     name = models.CharField(max_length=100)
     departure_city = models.CharField(max_length=50)
     arrival_city = models.CharField(max_length=50)
     price = models.DecimalField(max_digits=6, decimal_places=2)
-class Hotel(models.Model):
+class Hotels(models.Model):
     name = models.CharField(max_length=100)
     city = models.CharField(max_length=50)
     price_per_night = models.DecimalField(max_digits=6, decimal_places=2)
-class Activity(models.Model):
+class Activities(models.Model):
     name = models.CharField(max_length=100)
     city = models.CharField(max_length=50)
     price = models.DecimalField(max_digits=6, decimal_places=2)
