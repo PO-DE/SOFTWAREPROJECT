@@ -71,6 +71,9 @@ def booking_success(request, booking_id):
     return render(request, 'booking/booking_success.html', context)
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 7420c6dc11a4ccfbcbebce10ece905ac56cb2a63
 
 from .models import Hotels, Flights
 
@@ -124,6 +127,7 @@ def confirm_booking(request):
         # If not a POST request, just redirect to the form or show an error
         return render(request, 'book_hotel.html', {'error': 'Invalid method'})
 
+<<<<<<< HEAD
 #--------------------- Activity -------------------------------#
 
 
@@ -162,3 +166,8 @@ def add_activity(request):
 
 =======
 >>>>>>> b596ea709e2ce38bd15e80908b9797e5e12a6072
+=======
+
+# Add a view for the confirmation page
+
+>>>>>>> 7420c6dc11a4ccfbcbebce10ece905ac56cb2a63
