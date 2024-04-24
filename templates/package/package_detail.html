@@ -28,6 +28,16 @@
             {% endfor %}
         {% endif %}
 
+<<<<<<< HEAD
+=======
+        {% if package.destination == 'Toronto' %}
+            <!-- Display images for TORONTO -->
+            {% for image in toronto_images %}
+                <img src="{% static 'img/toronto/' %}{{ image }}" alt="{{ package.destination }}">
+            {% endfor %}
+        {% endif %}
+
+>>>>>>> b596ea709e2ce38bd15e80908b9797e5e12a6072
         {% if package.destination == 'Vancouver' %}
             <!-- Display images for VANCOUVER -->
             {% for image in vancouver_images %}
@@ -49,13 +59,47 @@
             {% endfor %}
         {% endif %}
 
+<<<<<<< HEAD
+=======
+        {% if package.destination == 'Mississauga' %}
+            <!-- Display images for MISSISSAUGA -->
+            {% for image in mississauga_images %}
+                <img src="{% static 'img/mississauga/' %}{{ image }}" alt="{{ package.destination }}">
+            {% endfor %}
+        {% endif %}
+
+        {% if package.destination == 'Calgary' %}
+            <!-- Display images for CALGARY -->
+            {% for image in calgary_images %}
+                <img src="{% static 'img/calgary/' %}{{ image }}" alt="{{ package.destination }}">
+            {% endfor %}
+        {% endif %}
+
+>>>>>>> b596ea709e2ce38bd15e80908b9797e5e12a6072
         {% if package.destination == 'Alberta' %}
             <!-- Display images for ALBERTA -->
             {% for image in alberta_images %}
                 <img src="{% static 'img/alberta/' %}{{ image }}" alt="{{ package.destination }}">
             {% endfor %}
         {% endif %}
+<<<<<<< HEAD
     
+=======
+
+        {% if package.destination == 'Regina' %}
+            <!-- Display images for REGINA -->
+            {% for image in regina_images %}
+                <img src="{% static 'img/regina/' %}{{ image }}" alt="{{ package.destination }}">
+            {% endfor %}
+        {% endif %}
+
+        {% if package.destination == 'Hamilton' %}
+            <!-- Display images for HAMILTON -->
+            {% for image in hamilton_images %}
+                <img src="{% static 'img/hamilton/' %}{{ image }}" alt="{{ package.destination }}">
+            {% endfor %}
+        {% endif %}
+>>>>>>> b596ea709e2ce38bd15e80908b9797e5e12a6072
 
     </div>
     <br>

@@ -1,7 +1,11 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, render
 from management.booking.forms import BookingForm
+<<<<<<< HEAD
 from .models import Booking,Activities
+=======
+from .models import Booking
+>>>>>>> b596ea709e2ce38bd15e80908b9797e5e12a6072
 from rest_framework import viewsets
 from .serializers import BookingSerializer
 from management.package.models import Package
@@ -66,6 +70,7 @@ def booking_success(request, booking_id):
     }
     return render(request, 'booking/booking_success.html', context)
 
+<<<<<<< HEAD
 
 from .models import Hotels, Flights
 
@@ -155,3 +160,5 @@ def add_activity(request):
         return render(request, 'activity/add_activity.html')
 
 
+=======
+>>>>>>> b596ea709e2ce38bd15e80908b9797e5e12a6072

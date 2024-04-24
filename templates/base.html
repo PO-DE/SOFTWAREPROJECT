@@ -30,6 +30,7 @@
                     <a class="nav-link {% if request.path == '/' %}active{% endif %}" aria-current="page"
                        href="/">Home</a>
                 </li>
+<<<<<<< HEAD
                  <li class="nav-item">
                    <a class="nav-link{%if request.resolver_match.url_name == 'hotels_list' %}active{% endif %}"
                          href="{% url 'hotels_list' %}" style="color:grey;">Hotels</a>
@@ -44,6 +45,8 @@
                          href="{% url 'activity_list' %}" style="color:grey;">Activities</a>
         <li>
             {# ------------------------------------- #}
+=======
+>>>>>>> b596ea709e2ce38bd15e80908b9797e5e12a6072
                 {#      packages page #}
                 <li class="nav-item">
                     <a class="nav-link {% if request.path == '/packagelist/' %}active{% endif %}" href="packagelist/"> Pre-Made Packages</a>

@@ -19,6 +19,7 @@ class Booking(models.Model):
     def clean(self):
         # Don't allow end_date to be before start_date
         if self.end_Date and self.start_Date and self.end_Date <= self.start_Date:
+<<<<<<< HEAD
             raise ValidationError(_('The end date cannot be before or the same as the start date.'))
 
 
@@ -40,3 +41,6 @@ class Activities(models.Model):
     description = models.CharField(max_length=500)
     price = models.DecimalField(max_digits=6, decimal_places=2)
     image = models.ImageField(upload_to='activity_images/')  # Define ImageField
+=======
+            raise ValidationError(_('The end date cannot be before or the same as the start date.'))
+>>>>>>> b596ea709e2ce38bd15e80908b9797e5e12a6072
