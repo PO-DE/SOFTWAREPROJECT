@@ -32,6 +32,9 @@ class Hotels(models.Model):
     name = models.CharField(max_length=100)
     city = models.CharField(max_length=50)
     price_per_night = models.DecimalField(max_digits=6, decimal_places=2)
+    image = models.ImageField(upload_to='hotels', default='path/to/default.jpg')
+
+
 class Activities(models.Model):
     name = models.CharField(max_length=100)
     city = models.CharField(max_length=50)
