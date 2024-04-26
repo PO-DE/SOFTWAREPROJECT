@@ -173,27 +173,6 @@
         <div class="text-center my-5">
             <h2 style="border: none; color: #0056b3; text-align: start; margin-left: 0px; margin-bottom: 20px">Popular Packages</h2>
             <p class="mb-4">Thinking of traveling somewhere soon? Here are some options to help you get started.</p>
-            {#        <div class="row">#}
-            {#            <!-- Assuming 'packages' is a list of package objects -->#}
-            {#            {% for package in packages %}#}
-            {#                {% if package.destination|lower in ["toronto", "alberta", "mumbai"] %}#}
-            {#                    <!-- Start of a package card -->#}
-            {#                    <div class="col-md-4 mb-3">#}
-            {#                        <div class="card h-100">#}
-            {#                            <!-- The line below constructs the path to the image based on the package destination -->#}
-            {#                            <img src="{% static 'img/'|add:package.destination|lower|add:'/'|add:package.destination|lower|add:'1.jpg' %}" class="card-img-top" alt="{{ package.destination }}">#}
-            {#                            <div class="card-body">#}
-            {#                                <h5 class="card-title">{{ package.destination }}</h5>#}
-            {#                                <p class="card-text">{{ package.duration }} Days Trip</p>#}
-            {#                                <p class="card-text">${{ package.price }}</p>#}
-            {#                                <a href="{% url 'package_detail' package.id %}" class="btn btn-primary">View Package</a>#}
-            {#                            </div>#}
-            {#                        </div>#}
-            {#                    </div>#}
-            {#                    <!-- End of a package card -->#}
-            {#                {% endif %}#}
-            {#            {% endfor %}#}
-            {#        </div>#}
             <div class="p-index container" style="display: flex; flex-direction: row; justify-content: space-around; align-items: stretch; column-gap: 50px">
                 <div class="card mb-3">
                     {% if package_alberta %}
@@ -203,21 +182,21 @@
                             <h5 class="card-title">Alberta, Canada</h5>
 {#                            <p class="card-text">7 Days Trip</p>#}
                             <p class="card-text">CAD$ {{ package_alberta.price }}</p>
-                            <a href="{% url 'package_detail' 5 %}" class="btn btn-primary">View Package</a>
+                            <a href="{% url 'package_detail' 1 %}" class="btn btn-primary">View Package</a>
                         </div>
                     </div>
                     {% endif %}
                 </div>
                 <!-- Second card for Toronto -->
                 <div class="card mb-3">
-                    {% if package_toronto %}
+                    {% if package_newyork %}
                     <div class="card h-100">
-                        <img src="{% static 'img/toronto/toronto4.jpg' %}" class="card-img-top" alt="Toronto, Canada">
+                        <img src="{% static 'img/newyork.jpg' %}" class="card-img-top" alt="Newyork, USA">
                         <div class="card-body">
-                            <h5 class="card-title">Toronto, Canada</h5>
+                            <h5 class="card-title">Newyork, USA</h5>
 {#                            <p class="card-text">7 Days Trip</p>#}
-                            <p class="card-text">CAD$ {{ package_toronto.price }}</p>
-                            <a href="{% url 'package_detail' 4 %}" class="btn btn-primary">View Package</a>
+                            <p class="card-text">CAD$ {{ package_newyork.price }}</p>
+                            <a href="{% url 'package_detail' 3 %}" class="btn btn-primary">View Package</a>
                         </div>
                     </div>
                     {% endif %}
@@ -230,7 +209,7 @@
                         <div class="card-body">
                             <h5 class="card-title">Mumbai, India</h5>
                             <p class="card-text">CAD$ {{ package_mumbai.price }}</p>
-                            <a href="{% url 'package_detail' 7 %}" class="btn btn-primary">View Package</a>
+                            <a href="{% url 'package_detail' 2 %}" class="btn btn-primary">View Package</a>
                         </div>
                     </div>
                     {% endif %}

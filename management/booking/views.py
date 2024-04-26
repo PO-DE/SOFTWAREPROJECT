@@ -67,17 +67,49 @@ def booking_success(request, booking_id):
     return render(request, 'booking/booking_success.html', context)
 
 
+
+
+
 from .models import Hotels, Flights
 
 def hotels_list(request):
     # Use Hotel.objects.all() to get all hotels from the database.
     hotels = Hotels.objects.all()
+
+    # Dictionary mapping activity names to their respective image files
+    hotel_images = {
+        'Marriot': ['hotels/hotel1.jpg'],
+        'Novotel': ['hotels/hotel2.jpg'],
+        'Holiday Inn': ['hotels/hotel3.jpg'],
+        'best western': ['hotels/hotel4.jpg'],
+    }
+
+    # Add image paths to each activity object
+    for hotel in hotels:
+        if hotel.name in hotel_images:
+            hotel.image_urls = [f'img/{path}' for path in hotel_images[hotel.name]]
+        else:
+            hotel.image_urls = ['img/hotel/default.jpg']  # Default image if none specified
+
     return render(request, 'hotels/hotels_list.html', {'hotels': hotels})
 
+# Assuming 'flights_list' is a function and the indentation should be at the function level
 def flights_list(request):
     flights = Flights.objects.all()
-    return render(request, 'flights/flights_list.html', {'flights': flights})
 
+    flight_images = {
+        'Air Canada': ['flights/flight2.jpg'],
+        'British Airways': ['flights/flight3.jpg'],
+    }
+
+    # Add image paths to each flight object
+    for flight in flights:
+        if flight.name in flight_images:
+            flight.image_urls = [f'img/{path}' for path in flight_images[flight.name]]
+        else:
+            flight.image_urls = ['img/flight/default.jpg']
+
+    return render(request, 'flights/flights_list.html',  {'flights': flights})
 
 
 def book_hotel(request):
@@ -88,7 +120,7 @@ def book_hotel(request):
     # Add additional context or booking logic if necessary
     return render(request, 'hotels/book_hotel.html', {'hotel': hotel})
 
-def book_flight(reqest):
+def book_flight(request):
     flight = Flights.objects.all()
     return render(request, 'flights/book_flight.html', {'flight': flight})
 
