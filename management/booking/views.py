@@ -186,4 +186,3 @@ def add_activity(request):
     else:
         return render(request, 'activity/add_activity.html')
 
-

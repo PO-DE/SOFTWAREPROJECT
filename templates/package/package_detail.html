@@ -1,5 +1,3 @@
-<!-- package_detail.html -->
-
 {% extends 'base.html' %}
 {% load static %}
 {% load custom_filters %}
@@ -27,7 +25,6 @@
                 <img src="{% static 'img/mumbai/' %}{{ image }}" alt="{{ package.destination }}">
             {% endfor %}
         {% endif %}
-
         {% if package.destination == 'Vancouver' %}
             <!-- Display images for VANCOUVER -->
             {% for image in vancouver_images %}
@@ -55,7 +52,6 @@
                 <img src="{% static 'img/alberta/' %}{{ image }}" alt="{{ package.destination }}">
             {% endfor %}
         {% endif %}
-    
 
     </div>
     <br>
