@@ -1,7 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, render
 from management.booking.forms import BookingForm
-from .models import Booking
+from .models import Booking,Activities
 from rest_framework import viewsets
 from .serializers import BookingSerializer
 from management.package.models import Package
@@ -65,4 +65,124 @@ def booking_success(request, booking_id):
         'redirect_url': redirect_url,
     }
     return render(request, 'booking/booking_success.html', context)
+
+
+
+
+
+from .models import Hotels, Flights
+
+def hotels_list(request):
+    # Use Hotel.objects.all() to get all hotels from the database.
+    hotels = Hotels.objects.all()
+
+    # Dictionary mapping activity names to their respective image files
+    hotel_images = {
+        'Marriot': ['hotels/hotel1.jpg'],
+        'Novotel': ['hotels/hotel2.jpg'],
+        'Holiday Inn': ['hotels/hotel3.jpg'],
+        'best western': ['hotels/hotel4.jpg'],
+    }
+
+    # Add image paths to each activity object
+    for hotel in hotels:
+        if hotel.name in hotel_images:
+            hotel.image_urls = [f'img/{path}' for path in hotel_images[hotel.name]]
+        else:
+            hotel.image_urls = ['img/hotel/default.jpg']  # Default image if none specified
+
+    return render(request, 'hotels/hotels_list.html', {'hotels': hotels})
+
+# Assuming 'flights_list' is a function and the indentation should be at the function level
+def flights_list(request):
+    flights = Flights.objects.all()
+
+    flight_images = {
+        'Air Canada': ['flights/flight2.jpg'],
+        'British Airways': ['flights/flight3.jpg'],
+    }
+
+    # Add image paths to each flight object
+    for flight in flights:
+        if flight.name in flight_images:
+            flight.image_urls = [f'img/{path}' for path in flight_images[flight.name]]
+        else:
+            flight.image_urls = ['img/flight/default.jpg']
+
+    return render(request, 'flights/flights_list.html',  {'flights': flights})
+
+
+def book_hotel(request):
+    hotel = Hotels.objects.all()
+    context = {
+        'hotel': hotel
+    }
+    # Add additional context or booking logic if necessary
+    return render(request, 'hotels/book_hotel.html', {'hotel': hotel})
+
+def book_flight(request):
+    flight = Flights.objects.all()
+    return render(request, 'flights/book_flight.html', {'flight': flight})
+
+from django.shortcuts import render
+
+def book_flight(request):
+    if request.method == 'POST':
+        # Handle the flight booking logic here
+        return render(request, 'flights/booking_confirmation.html')
+    else:
+        return render(request, 'flights/book_flight.html')
+
+
+# views.py
+
+from django.shortcuts import render
+from django.http import HttpResponse
+
+def confirm_booking(request):
+    if request.method == 'POST':
+        # You can add logic here to process the dates or save the booking
+        check_in_date = request.POST.get('check_in')
+        check_out_date = request.POST.get('check_out')
+
+        # For now, we'll just pretend we processed the booking and return a simple response
+        return HttpResponse('Booking successful!')
+    else:
+        # If not a POST request, just redirect to the form or show an error
+        return render(request, 'book_hotel.html', {'error': 'Invalid method'})
+
+#--------------------- Activity -------------------------------#
+
+
+def activity_list(request):
+    activities = Activities.objects.all()
+
+    # Dictionary mapping activity names to their respective image files
+    activity_images = {
+        'Ice Skating': ['activity/activity1.jpg'],
+        'Rock Climbing Adventure': ['activity/activity2.jpg'],
+
+    }
+
+    # Add image paths to each activity object
+    for activity in activities:
+        if activity.name in activity_images:
+            activity.image_urls = [f'img/{path}' for path in activity_images[activity.name]]
+        else:
+            activity.image_urls = ['img/activity/default.jpg']  # Default image if none specified
+
+    return render(request, 'activity/activity_list.html', {'activities': activities})
+
+def add_activity(request):
+    if request.method == 'POST':
+        name = request.POST.get('name', 'Untitled Activity')
+        description = request.POST.get('description', '')
+        price = request.POST.get('price', 0)
+
+        activity = Activities(name=name, description=description, price=price)
+        activity.save()
+
+        return render(request, 'activity/activity_booking_success.html')
+    else:
+        return render(request, 'activity/add_activity.html')
 

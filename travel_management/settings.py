@@ -145,3 +145,6 @@ STATICFILES_DIRS = [
 ]
 
 LOGIN_URL = 'signin'
+STRIPE_PUBLISHABLE_KEY ="pk_test_51PBMa7IzasFhrxZNcfCuenc4obPFHQec4wWbhx1Pc1jQJHmoes44yBO6DfvuJvhasxa708KfPb30yROGiQNOtaFh00jBQS3qhy"
+STRIPE_SECRET_KEY = 'sk_test_51PBMa7IzasFhrxZN79CK97nWsEEcyFZtRGTs96la3xJja4CldAlsub5RrLzl5OPItd64pucUmRKIOUjuaxrnRVAy00oRmaqVnx'
+# Stripe keys

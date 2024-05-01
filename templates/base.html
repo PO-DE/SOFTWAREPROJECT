@@ -30,9 +30,24 @@
                     <a class="nav-link {% if request.path == '/' %}active{% endif %}" aria-current="page"
                        href="/">Home</a>
                 </li>
-                {#      packages page #}
+
+                 <li class="nav-item">
+
+                   <a class="nav-link{%if request.resolver_match.url_name == 'hotels_list' %}active{% endif %}"
+                         href="{% url 'hotels_list' %}" style="color:grey;">Hotels</a>
+        <li>
+            <li class="nav-item">
+                <a class="nav-link {% if request.resolver_match.url_name == 'flights_list' %}active{% endif %}"
+                   href="{% url 'flights_list' %}" style="color:grey;">Flights</a>
+        </li>
+
+                 <li class="nav-item">
+                   <a class="nav-link{%if request.resolver_match.url_name == 'activity_list' %}active{% endif %}"
+                         href="{% url 'activity_list' %}" style="color:grey;">Activities</a>
+        <li>
+
                 <li class="nav-item">
-                    <a class="nav-link {% if request.path == '/packagelist/' %}active{% endif %}" href="packagelist/"> Pre-Made Packages</a>
+                    <a class="nav-link {% if request.resolver_match.url_name == '/package_list/' %}active{% endif %}" href="{% url 'package_list' %}"> Pre-Made Packages</a>
                 </li>
                 <li class="nav-item dropdown">
                     {% if user.is_authenticated %}
@@ -92,7 +107,7 @@
         
     </div>
 <div class="text-center p-3" style="background-color: rgba(0,0,0,.2);" >
-        All rights reserves to @Voyage Pvt. Ltd.
+        All rights reserves to @Voyage Management.
     </div>
 </footer>
 </html>
