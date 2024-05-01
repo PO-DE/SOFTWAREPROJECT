@@ -72,7 +72,8 @@
     <p>Price: {{ package.price }} CAD</p>
     <br>
     <a href="{% url 'book_package'%}" class="btn btn-primary">Book This Package</a>
-
+  <!-- Somewhere in your package display templates -->
+    <a href="{% url 'add_to_cart' package.id %}">Add to Cart</a>
 
     <a href="{% url 'package_list' %}" class="back-link">Back to Package List</a>
     <style>

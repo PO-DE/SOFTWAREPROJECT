@@ -11,6 +11,8 @@ urlpatterns = [
     path('search/', search_results, name='search_results'),
     path('Booking/', BookingViewSet.as_view({'get': 'list'}), name='Bookings'),
     path('', include('management.user_profile.urls')),
-    path('',include('management.booking.urls'))
+    path('',include('management.booking.urls')),
+    path('add_to_cart/',include( "management.cart.urls"), name='add_to_cart'),
+    path('', include('management.payment.urls')),
 
 ]
