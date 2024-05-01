@@ -20,6 +20,11 @@ def cart_details(request):
 
 def remove_from_cart(request, item_id):
     item = get_object_or_404(CartItem, id=item_id)
-    if item.cart.user == request.user:  # Security check
-        item.delete()
+    if item.cart.user == request.user:
+        if item.quantity > 1:
+            item.quantity -= 1
+            item.save()
+        else:
+            item.delete()
+
     return redirect('cart_details')
